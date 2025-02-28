@@ -10,6 +10,7 @@ const Navbar = () => {
           <Link to="hero" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Home</Link>
           <Link to="projects" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Projects</Link>
           <Link to="skills" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Skills</Link>
+          <Link to="awards" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Awards</Link> {/* New link */}
           <Link to="contact" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Contact</Link>
         </div>
       </div>

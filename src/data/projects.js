@@ -1,12 +1,11 @@
 export const projects = [
     {
       id: 1,
-      title: 'Project One',
-      description: 'A web app that does something amazing.',
-      image: 'https://via.placeholder.com/300x200',
-      technologies: ['React', 'Tailwind', 'Firebase'],
-      demo: 'https://example.com',
-      code: 'https://github.com'
+      title: 'Task Management Application',
+      description: 'A web app that help you manage your daily tasks.',
+      image: 'https://cdn-icons-png.freepik.com/256/11319/11319783.png?semt=ais_hybrid',
+      technologies: ['React', 'Express', 'Mongo'],
+      demo: 'https://tasksolver.netlify.app/',
+      code: 'https://github.com/MinhNguyen282/task-management-application'
     },
-    // Add more projects here
   ];
