@@ -14,9 +14,6 @@ const Hero = () => {
         <p className="text-2xl mb-4" style={{ color: "#2E2E2E" }}>
           Software Engineering
         </p>
-        <p className="mb-8 max-w-xl mx-auto" style={{ color: "#2E2E2E" }}>
-          I'm a passionate full-stack developer who creates responsive and innovative web applications. I love clean design and modern code.
-        </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link to="/projects">
             <button

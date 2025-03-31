@@ -33,6 +33,13 @@ const Contact = () => {
             >
               GitHub
             </a>
+            <a
+              href="https://www.facebook.com/MinhNg282"
+              className='px-5 py-3 rounded-full font-medium transition transform hover:scale-105'
+              style={{ backgroundColor: "#4A90E2", color: "#FFFFFF" }}
+            >
+              Facebook
+            </a>
           </div>
         </div>
       </div>
