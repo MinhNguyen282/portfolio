@@ -1,23 +1,35 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
-import Awards from './components/Awards'; // New import
+import Awards from './components/Awards';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
+import ProjectDetails from './components/ProjectDetails';
+import CV from './components/CV';
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <Projects />
-      <Skills />
-      <Awards /> 
-      <Contact />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/awards" element={<Awards />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/cv" element={<CV />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

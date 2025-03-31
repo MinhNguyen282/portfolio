@@ -1,17 +1,29 @@
 import React from 'react';
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 w-full bg-white shadow-md z-10">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        <div className="text-2xl font-bold text-gray-800">My Portfolio</div>
-        <div className="space-x-6">
-          <Link to="hero" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Home</Link>
-          <Link to="projects" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Projects</Link>
-          <Link to="skills" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Skills</Link>
-          <Link to="awards" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Awards</Link> {/* New link */}
-          <Link to="contact" smooth={true} duration={500} className="text-gray-600 hover:text-blue-600 cursor-pointer">Contact</Link>
+    <nav className="sticky top-0 z-50 bg-[#FFFFFF] shadow">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="text-2xl font-bold" style={{ color: "#2E2E2E" }}>
+          <Link to="/">Nguyen Huu Hoang Minh</Link>
+        </div>
+        <div className="flex space-x-6">
+          <Link to="/" className="font-medium" style={{ color: "#2E2E2E" }}>
+            Home
+          </Link>
+          <Link to="/projects" className="font-medium" style={{ color: "#2E2E2E" }}>
+            Projects
+          </Link>
+          <Link to="/skills" className="font-medium" style={{ color: "#2E2E2E" }}>
+            Skills
+          </Link>
+          <Link to="/awards" className="font-medium" style={{ color: "#2E2E2E" }}>
+            Awards
+          </Link>
+          <Link to="/contact" className="font-medium" style={{ color: "#2E2E2E" }}>
+            Contact
+          </Link>
         </div>
       </div>
     </nav>
