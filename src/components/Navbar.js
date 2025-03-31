@@ -5,8 +5,14 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-[#FFFFFF] shadow">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="text-2xl font-bold" style={{ color: "#2E2E2E" }}>
-          <Link to="/">Nguyen Huu Hoang Minh</Link>
+        <div className="flex-shrink-0">
+          <Link to="/">
+            <img
+              src = {process.env.PUBLIC_URL + '/nhhminh-high-resolution-logo-full.png'}
+              alt = "Logo"
+              className='h-10'
+            />
+          </Link>
         </div>
         <div className="flex space-x-6">
           <Link to="/" className="font-medium" style={{ color: "#2E2E2E" }}>
