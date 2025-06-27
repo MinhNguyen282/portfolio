@@ -28,6 +28,15 @@ export const projects = [
     code: 'https://github.com/MinhNguyen282/CS426_Travelly'
   },
   {
+    id: 0,
+    title: "E-Compare",
+    description: 'A web-based product comparison application with React and FastAPI, enabling users to search, compare, and manage product details seamlessly with AI supports.',
+    image: 'https://raw.githubusercontent.com/MinhNguyen282/E-Compare/refs/heads/main/frontend/public/logo_icon.png',
+    technologies: ['ReactJS', 'JavaScript', 'Python', 'FastAPI', 'Web Crawler'],
+    demo: 'https://e-compare.vercel.app/',
+    code: 'https://github.com/MinhNguyen282/E-Compare'
+  },
+  {
     id: 10,
     title: 'Task Management Application',
     description: 'A web app that helps you manage your daily tasks.',

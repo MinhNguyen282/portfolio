@@ -10,6 +10,7 @@ import Awards from './components/Awards';
 import Contact from './components/Contact';
 import ProjectDetails from './components/ProjectDetails';
 import CV from './components/CV';
+import Experience from "./components/Experience"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/skills" element={<Skills />} />
             <Route path="/awards" element={<Awards />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/experience" element={<Experience />} />
             <Route path="/cv" element={<CV />} />
           </Routes>
         </main>

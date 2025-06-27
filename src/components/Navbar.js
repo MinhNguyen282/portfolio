@@ -33,6 +33,9 @@ const Navbar = () => {
           <Link to="/skills" className="font-medium" style={{ color: "#2E2E2E" }}>
             Skills
           </Link>
+          <Link to="/experience" className="font-medium" style={{ color: "#2E2E2E" }}>
+            Experience
+          </Link>
           <Link to="/awards" className="font-medium" style={{ color: "#2E2E2E" }}>
             Awards
           </Link>
@@ -78,6 +81,14 @@ const Navbar = () => {
               style={{ color: "#2E2E2E" }}
             >
               Skills
+            </Link>
+            <Link
+              to="/experience"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block font-medium"
+              style={{ color: "#2E2E2E" }}
+            >
+              Experience
             </Link>
             <Link
               to="/awards"

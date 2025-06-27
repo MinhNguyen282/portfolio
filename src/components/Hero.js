@@ -14,6 +14,11 @@ const Hero = () => {
         <p className="text-2xl mb-4" style={{ color: "#2E2E2E" }}>
           Software Engineering
         </p>
+        <div className="max-w-2xl mx-auto mb-6">
+          <p className="text-lg text-[#444]">
+            I am a back-end developer with a Bachelor's degree in Computer Science from the Ho Chi Minh City University of Science (HCMUS), VNU-HCM. With a strong foundation in web application development, I am proficient in back-end technologies such as Java and NodeJS, and also have experience with front-end development using ReactJS. My expertise includes designing and implementing RESTful APIs and managing both SQL (MySQL) and NoSQL (MongoDB) databases. I am passionate about building efficient and scalable server-side applications.
+          </p>
+        </div>
         <div className="flex flex-wrap justify-center gap-4">
           <Link to="/projects">
             <button
