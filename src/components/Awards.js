@@ -3,9 +3,12 @@ import { awards } from '../data/awards'
 
 const Awards = () => {
   return (
-    <section id="awards" className="bg-white py-16">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Awards & Achievements</h2>
+    <section className="relative bg-gradient-to-br from-[#f0f4ff] to-[#e0e7ff] py-20 min-h-screen overflow-hidden">
+      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] pointer-events-none"></div>
+      <div className="relative z-10 container mx-auto px-6">
+        <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E2E2E] to-[#4A90E2] mb-10 drop-shadow-lg animate-fadeIn leading-tight" style={{ WebkitTextStroke: '0.5px #4A90E2' }}>
+          Awards
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {awards.map((award) => (
             <div

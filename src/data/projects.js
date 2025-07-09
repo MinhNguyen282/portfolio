@@ -30,7 +30,7 @@ export const projects = [
   {
     id: 0,
     title: "E-Compare",
-    description: 'A web-based product comparison application with React and FastAPI, enabling users to search, compare, and manage product details seamlessly with AI supports.',
+    description: 'A web-based product comparison application with React and FastAPI, enabling users to search, compare, and manage product details seamlessly with AI supports (The backend server is currently not available, sorry for the inconvenience).',
     image: 'https://raw.githubusercontent.com/MinhNguyen282/E-Compare/refs/heads/main/frontend/public/logo_icon.png',
     technologies: ['ReactJS', 'JavaScript', 'Python', 'FastAPI', 'Web Crawler'],
     demo: 'https://e-compare.vercel.app/',
@@ -38,12 +38,12 @@ export const projects = [
   },
   {
     id: 10,
-    title: 'Task Management Application',
-    description: 'A web app that helps you manage your daily tasks.',
-    image: 'https://cdn-icons-png.freepik.com/256/11319/11319783.png?semt=ais_hybrid',
+    title: 'Clothing & Lifestyle Store',
+    description: 'An online store that sells clothes and goods. The website is built with React, Express, and MongoDB, providing a full-stack solution for e-commerce.',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9GC91qG9X6Q1TFutVdJ1ZD9isGO8nwVHbqg&s',
     technologies: ['React', 'Express', 'Mongo'],
-    demo: 'https://tasksolver.netlify.app/',
-    code: 'https://github.com/MinhNguyen282/task-management-application',
+    demo: 'https://aodaimaysancodinh.netlify.app/',
+    code: 'https://github.com/orgs/AodaimaysanDev/repositories',
   },
   // Add other projects if needed...
 ];

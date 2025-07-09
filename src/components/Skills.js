@@ -2,12 +2,12 @@ import React from 'react';
 
 const skillCategories = [
   {
-    category: 'Frontend',
-    skills: ['ReactJS', 'JavaScript'],
+    category: 'Languages',
+    skills: ['Java', 'C++', 'Python', 'JavaScript'],
   },
   {
-    category: 'Backend',
-    skills: ['NodeJS', 'Java', 'Spring', 'Python', 'C++'],
+    category: 'Frameworks',
+    skills: ['Node.js', 'React.js', 'Express.js', 'Spring', 'Netty Websocket'],
   },
   {
     category: 'Database',
@@ -21,10 +21,11 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 bg-[#F4F4F4]">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-8" style={{ color: "#2E2E2E" }}>
-          Skills
+    <section id="skills" className="relative bg-gradient-to-br from-[#e0f7fa] to-[#e3f2fd] py-20 min-h-screen overflow-hidden">
+      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] pointer-events-none"></div>
+      <div className="relative z-10 container mx-auto px-6">
+        <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E2E2E] to-[#4A90E2] mb-10 drop-shadow-lg animate-fadeIn leading-tight" style={{ WebkitTextStroke: '0.5px #4A90E2' }}>
+          My Skills
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, idx) => (

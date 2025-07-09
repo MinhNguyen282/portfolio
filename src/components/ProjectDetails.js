@@ -24,8 +24,9 @@ const ProjectDetails = () => {
   }
 
   return (
-    <section className="py-16 bg-[#F4F4F4]">
-      <div className="container mx-auto px-6">
+    <section className="relative bg-gradient-to-br from-[#f0f4ff] to-[#e0e7ff] py-20 min-h-screen overflow-hidden">
+      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/hexellence.png')] pointer-events-none"></div>
+      <div className="relative z-10 container mx-auto px-6">
         <Link to="/projects" className="mb-4 inline-block underline" style={{ color: "#4A90E2" }}>
           &larr; Back to Projects
         </Link>

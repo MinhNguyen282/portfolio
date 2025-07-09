@@ -2,18 +2,24 @@ import React from 'react';
 
 const experiences = [
   {
-    jobTitle: 'Back-end Developer',
+    jobTitle: 'Game Back-end Developer',
     company: 'GihOt Studio',
-    duration: 'Jun 2025 - Present',
-    description: 'Developing the back-end server infrastructure for a first-person shooter (FPS) game. My core responsibilities involve using Java with the Spring Framework to build scalable and robust services for player authentication, matchmaking, and data management, using MongoDB to efficiently store and retrieve dynamic data such as player profiles, game statistics, and leaderboards.'
+    duration: 'Jun-16-2025 to Aug-8-2025',
+    description: 'Designed and implemented the entire game–server stack for a real-time multiplayer title that blends MOBA, RTS and minion-control mechanics.',
+    details: [
+      'Built RESTful micro-services with Java 17 / Spring Boot for user authentication, matchmaking and room/lobby management; persisted player and game data in MongoDB.',
+      'Developed a low-latency Netty-powered WebSocket gateway; created a custom TLV (type-length-value) binary protocol to stream gameplay events between client and server.',
+      'Optimized thread-pool usage, I/O pipelines, message serialization and message sending mechanics.'
+    ]
   },
 ];
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-16 bg-white">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-8" style={{ color: "#2E2E2E" }}>
+    <section className="relative bg-gradient-to-br from-[#f0f4ff] to-[#e0e7ff] py-20 min-h-screen overflow-hidden">
+      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] pointer-events-none"></div>
+      <div className="relative z-10 container mx-auto px-6">
+        <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E2E2E] to-[#4A90E2] mb-10 drop-shadow-lg animate-fadeIn leading-tight" style={{ WebkitTextStroke: '0.5px #4A90E2' }}>
           Experience
         </h2>
         <div className="space-y-8 max-w-3xl mx-auto">
@@ -25,6 +31,11 @@ const Experience = () => {
                 <span className="text-sm text-gray-600">{exp.duration}</span>
               </div>
               <p className="text-gray-700">{exp.description}</p>
+              <ul className="mt-4 list-disc pl-5 space-y-2 text-gray-700">
+                {exp.details.map((detail, index) => (
+                  <li key={index} className="text-sm">{detail}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -33,4 +44,4 @@ const Experience = () => {
   );
 };
 
-export default Experience; 
+export default Experience;
