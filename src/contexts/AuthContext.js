@@ -15,8 +15,8 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Default admin credentials (in production, these should be environment variables)
-  const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
-  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+  const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
+  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'portfolio2024';
 
   // Check if user is already authenticated on component mount
   useEffect(() => {

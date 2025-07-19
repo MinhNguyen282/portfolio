@@ -125,13 +125,6 @@ const AdminLogin = () => {
               )}
             </button>
           </form>
-
-          {/* Info */}
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Default credentials: admin / portfolio2024
-            </p>
-          </div>
         </div>
       </div>
     </section>
