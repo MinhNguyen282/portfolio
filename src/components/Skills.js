@@ -1,30 +1,14 @@
 import React from 'react';
-
-const skillCategories = [
-  {
-    category: 'Languages',
-    skills: ['Java', 'C++', 'Python', 'JavaScript'],
-  },
-  {
-    category: 'Frameworks',
-    skills: ['Node.js', 'React.js', 'Express.js', 'Spring', 'Netty Websocket'],
-  },
-  {
-    category: 'Database',
-    skills: ['MySQL', 'MongoDB'],
-  },
-  {
-    category: 'Version Control',
-    skills: ['Git'],
-  },
-];
+import { useData } from '../contexts/DataContext';
 
 const Skills = () => {
+  const { skills: skillCategories } = useData();
+  
   return (
-    <section id="skills" className="relative bg-gradient-to-br from-[#e0f7fa] to-[#e3f2fd] py-20 min-h-screen overflow-hidden">
+    <section id="skills" className="relative bg-gradient-to-br from-[#e0f7fa] to-[#e3f2fd] dark:from-dark-900 dark:to-dark-800 py-20 min-h-screen overflow-hidden transition-colors duration-300">
       <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] pointer-events-none"></div>
       <div className="relative z-10 container mx-auto px-6">
-        <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E2E2E] to-[#4A90E2] mb-10 drop-shadow-lg animate-fadeIn leading-tight" style={{ WebkitTextStroke: '0.5px #4A90E2' }}>
+        <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-gray-primary to-primary-500 dark:from-white dark:to-primary-400 mb-10 drop-shadow-lg animate-fadeIn leading-tight">
           My Skills
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

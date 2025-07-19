@@ -1,25 +1,14 @@
 import React from 'react';
-
-const experiences = [
-  {
-    jobTitle: 'Game Back-end Developer',
-    company: 'GihOt Studio',
-    duration: 'Jun-16-2025 to Aug-8-2025',
-    description: 'Designed and implemented the entire game–server stack for a real-time multiplayer title that blends MOBA, RTS and minion-control mechanics.',
-    details: [
-      'Built RESTful micro-services with Java 17 / Spring Boot for user authentication, matchmaking and room/lobby management; persisted player and game data in MongoDB.',
-      'Developed a low-latency Netty-powered WebSocket gateway; created a custom TLV (type-length-value) binary protocol to stream gameplay events between client and server.',
-      'Optimized thread-pool usage, I/O pipelines, message serialization and message sending mechanics.'
-    ]
-  },
-];
+import { useData } from '../contexts/DataContext';
 
 const Experience = () => {
+  const { experience: experiences } = useData();
+  
   return (
-    <section className="relative bg-gradient-to-br from-[#f0f4ff] to-[#e0e7ff] py-20 min-h-screen overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#f0f4ff] to-[#e0e7ff] dark:from-dark-900 dark:to-dark-800 py-20 min-h-screen overflow-hidden transition-colors duration-300">
       <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] pointer-events-none"></div>
       <div className="relative z-10 container mx-auto px-6">
-        <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#2E2E2E] to-[#4A90E2] mb-10 drop-shadow-lg animate-fadeIn leading-tight" style={{ WebkitTextStroke: '0.5px #4A90E2' }}>
+        <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-gray-primary to-primary-500 dark:from-white dark:to-primary-400 mb-10 drop-shadow-lg animate-fadeIn leading-tight">
           Experience
         </h2>
         <div className="space-y-8 max-w-3xl mx-auto">

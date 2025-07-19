@@ -1,3 +1,12 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap location
+Sitemap: https://nguyenhuuhoangminh.me/sitemap.xml
+
+# Allow all crawlers to access CSS and JS files
+Allow: /static/
+
+# Crawl-delay (optional - set to be respectful to server resources)
+Crawl-delay: 1
