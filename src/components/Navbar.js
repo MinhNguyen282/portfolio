@@ -22,6 +22,23 @@ const Navbar = () => {
     return `${baseClass} ${isActiveLink(path) ? activeClass : inactiveClass}`;
   };
 
+  const mobileLinkClass = (path) => {
+    return `block py-2 px-3 rounded-md transition-colors duration-200 ${
+      isActiveLink(path)
+        ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20'
+        : 'text-gray-primary dark:text-gray-200 hover:text-primary-500 hover:bg-gray-50 dark:hover:bg-dark-700'
+    }`;
+  };
+
+  const navLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/projects', label: 'Projects' },
+    { path: '/skills', label: 'Skills' },
+    { path: '/experience', label: 'Experience' },
+    { path: '/awards', label: 'Awards' },
+    { path: '/contact', label: 'Contact' },
+  ];
+
   return (
     <>
       <nav 
@@ -43,24 +60,11 @@ const Navbar = () => {
           
           {/* Desktop navigation links */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className={linkClass('/')}>
-              Home
-            </Link>
-            <Link to="/projects" className={linkClass('/projects')}>
-              Projects
-            </Link>
-            <Link to="/skills" className={linkClass('/skills')}>
-              Skills
-            </Link>
-            <Link to="/experience" className={linkClass('/experience')}>
-              Experience
-            </Link>
-            <Link to="/awards" className={linkClass('/awards')}>
-              Awards
-            </Link>
-            <Link to="/contact" className={linkClass('/contact')}>
-              Contact
-            </Link>
+            {navLinks.map((link) => (
+              <Link key={link.path} to={link.path} className={linkClass(link.path)}>
+                {link.label}
+              </Link>
+            ))}
             {/* Theme toggle for desktop */}
             <ThemeToggle className="ml-4" />
           </div>
@@ -94,72 +98,16 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white dark:bg-dark-800 shadow-md transition-colors duration-300">
             <div className="px-4 pt-2 pb-4 space-y-3">
-              <Link
-                to="/"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block py-2 px-3 rounded-md transition-colors duration-200 ${
-                  isActiveLink('/') 
-                    ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20' 
-                    : 'text-gray-primary dark:text-gray-200 hover:text-primary-500 hover:bg-gray-50 dark:hover:bg-dark-700'
-                }`}
-              >
-                Home
-              </Link>
-              <Link
-                to="/projects"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block py-2 px-3 rounded-md transition-colors duration-200 ${
-                  isActiveLink('/projects') 
-                    ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20' 
-                    : 'text-gray-primary dark:text-gray-200 hover:text-primary-500 hover:bg-gray-50 dark:hover:bg-dark-700'
-                }`}
-              >
-                Projects
-              </Link>
-              <Link
-                to="/skills"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block py-2 px-3 rounded-md transition-colors duration-200 ${
-                  isActiveLink('/skills') 
-                    ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20' 
-                    : 'text-gray-primary dark:text-gray-200 hover:text-primary-500 hover:bg-gray-50 dark:hover:bg-dark-700'
-                }`}
-              >
-                Skills
-              </Link>
-              <Link
-                to="/experience"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block py-2 px-3 rounded-md transition-colors duration-200 ${
-                  isActiveLink('/experience') 
-                    ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20' 
-                    : 'text-gray-primary dark:text-gray-200 hover:text-primary-500 hover:bg-gray-50 dark:hover:bg-dark-700'
-                }`}
-              >
-                Experience
-              </Link>
-              <Link
-                to="/awards"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block py-2 px-3 rounded-md transition-colors duration-200 ${
-                  isActiveLink('/awards') 
-                    ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20' 
-                    : 'text-gray-primary dark:text-gray-200 hover:text-primary-500 hover:bg-gray-50 dark:hover:bg-dark-700'
-                }`}
-              >
-                Awards
-              </Link>
-              <Link
-                to="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block py-2 px-3 rounded-md transition-colors duration-200 ${
-                  isActiveLink('/contact') 
-                    ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20' 
-                    : 'text-gray-primary dark:text-gray-200 hover:text-primary-500 hover:bg-gray-50 dark:hover:bg-dark-700'
-                }`}
-              >
-                Contact
-              </Link>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={mobileLinkClass(link.path)}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         )}

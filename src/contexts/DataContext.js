@@ -6,19 +6,23 @@ import { awards as initialAwards } from '../data/awards';
 const initialSkills = [
   {
     category: 'Languages',
-    skills: ['Java', 'C++', 'Python', 'JavaScript'],
+    skills: ['Java', 'C++', 'Python', 'JavaScript', 'PHP', 'Go'],
   },
   {
     category: 'Frameworks',
-    skills: ['Node.js', 'React.js', 'Express.js', 'Spring', 'Netty Websocket'],
+    skills: ['Node.js', 'React.js', 'Express.js', 'Spring'],
   },
   {
     category: 'Database',
     skills: ['MySQL', 'MongoDB'],
   },
   {
-    category: 'Version Control',
-    skills: ['Git'],
+    category: 'DevOps',
+    skills: ['Git', 'GitHub Actions', 'CI/CD', 'Docker'],
+  },
+  {
+    category: 'Message Brokers',
+    skills: ['RabbitMQ'],
   },
 ];
 

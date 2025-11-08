@@ -19,18 +19,19 @@ const Hero = () => {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           {/* Avatar Image */}
           <div className="flex justify-center mb-6 animate-fadeIn">
-            <div className="relative">
-              <LazyImage 
-                src="/avatar.jpg" 
-                alt="Nguyễn Hữu Hoàng Minh - Software Engineer Portrait" 
-                className="w-36 h-36 rounded-full object-cover border-4 border-primary-500 shadow-xl bg-white transition-transform duration-300 hover:scale-105" 
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+              <LazyImage
+                src="/avatar.jpg"
+                alt="Nguyễn Hữu Hoàng Minh - Software Engineer Portrait"
+                className="relative w-36 h-36 rounded-full object-cover border-4 border-white dark:border-dark-800 shadow-xl bg-white transition-transform duration-300 hover:scale-105"
               />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary-500/20 to-transparent" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary-500/20 to-transparent pointer-events-none" />
             </div>
           </div>
           
           <h1 
-            className="text-4xl md:text-6xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-gray-primary to-primary-500 dark:from-white dark:to-primary-400 mb-6 drop-shadow-lg animate-fadeIn leading-tight"
+            className="text-4xl md:text-6xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-gray-primary to-primary-500 dark:from-white dark:to-primary-400 mb-6 drop-shadow-lg animate-fadeIn leading-normal py-2 vietnamese-text"
           >
             Nguyễn Hữu Hoàng Minh
           </h1>
@@ -51,17 +52,18 @@ const Hero = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fadeIn delay-300">
-            <Link to="/projects">
+            <Link to="/projects" className="group">
               <button
-                className="px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900"
+                className="relative px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900 overflow-hidden"
                 aria-label="View my projects"
               >
-                View My Work
+                <span className="relative z-10">View My Work</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </button>
             </Link>
-            <Link to="/skills">
+            <Link to="/skills" className="group">
               <button
-                className="px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg bg-white dark:bg-dark-800 text-primary-500 dark:text-primary-400 border-2 border-primary-500 dark:border-primary-400 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900"
+                className="relative px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl bg-white dark:bg-dark-800 text-primary-500 dark:text-primary-400 border-2 border-primary-500 dark:border-primary-400 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900"
                 aria-label="View my skills"
               >
                 My Skills
@@ -71,10 +73,10 @@ const Hero = () => {
               href="/Nguyen%20Huu%20Hoang%20Minh%20-%20CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block"
+              className="inline-block group"
             >
               <button
-                className="px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg bg-white dark:bg-dark-800 text-primary-500 dark:text-primary-400 border-2 border-primary-500 dark:border-primary-400 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900"
+                className="relative px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl bg-white dark:bg-dark-800 text-primary-500 dark:text-primary-400 border-2 border-primary-500 dark:border-primary-400 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900"
                 aria-label="Download my CV"
               >
                 Download CV

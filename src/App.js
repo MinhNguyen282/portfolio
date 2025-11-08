@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
 import SEO from './components/SEO';
+import ErrorBoundary from './components/ErrorBoundary';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -39,33 +40,35 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <HelmetProvider>
-      <ThemeProvider>
-        <BrowserRouter>
-          <ScrollToTop />
-          <SEO />
-          <div className="flex flex-col min-h-screen bg-white dark:bg-dark-900 transition-colors duration-300">
-            <Navbar />
-            <main className="flex-grow">
-              <Suspense fallback={<LoadingSpinner />}>
-                <Routes>
-                  <Route path="/" element={<Hero />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/project/:id" element={<ProjectDetails />} />
-                  <Route path="/skills" element={<Skills />} />
-                  <Route path="/admin" element={<ProtectedAdminRoute />} />
-                  <Route path="/awards" element={<Awards />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/experience" element={<Experience />} />
-                  <Route path="/cv" element={<CV />} />
-                </Routes>
-              </Suspense>
-            </main>
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </ThemeProvider>
-    </HelmetProvider>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <ThemeProvider>
+          <BrowserRouter>
+            <ScrollToTop />
+            <SEO />
+            <div className="flex flex-col min-h-screen bg-white dark:bg-dark-900 transition-colors duration-300">
+              <Navbar />
+              <main className="flex-grow">
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Routes>
+                    <Route path="/" element={<Hero />} />
+                    <Route path="/projects" element={<Projects />} />
+                    <Route path="/project/:id" element={<ProjectDetails />} />
+                    <Route path="/skills" element={<Skills />} />
+                    <Route path="/admin" element={<ProtectedAdminRoute />} />
+                    <Route path="/awards" element={<Awards />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/experience" element={<Experience />} />
+                    <Route path="/cv" element={<CV />} />
+                  </Routes>
+                </Suspense>
+              </main>
+              <Footer />
+            </div>
+          </BrowserRouter>
+        </ThemeProvider>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 }
 
