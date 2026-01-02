@@ -7,7 +7,6 @@ import ErrorBoundary from './components/ErrorBoundary';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ProtectedAdminRoute from './components/ProtectedAdminRoute';
 
 // Lazy load components for better performance
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -55,7 +54,6 @@ function App() {
                     <Route path="/projects" element={<Projects />} />
                     <Route path="/project/:id" element={<ProjectDetails />} />
                     <Route path="/skills" element={<Skills />} />
-                    <Route path="/admin" element={<ProtectedAdminRoute />} />
                     <Route path="/awards" element={<Awards />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/experience" element={<Experience />} />

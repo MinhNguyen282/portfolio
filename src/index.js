@@ -1,7 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { DataProvider } from './contexts/DataContext';
-import { AuthProvider } from './contexts/AuthContext';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -11,11 +10,9 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <DataProvider>
-        <App />
-      </DataProvider>
-    </AuthProvider>
+    <DataProvider>
+      <App />
+    </DataProvider>
   </React.StrictMode>
 );
 
