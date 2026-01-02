@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useData } from '../contexts/DataContext';
 import {
   FaServer,
@@ -19,7 +19,6 @@ import SEO from './SEO';
 
 const Skills = () => {
   const { skills: skillCategories } = useData();
-  const [hoveredSkill, setHoveredSkill] = useState(null);
 
   // Icon mapping for categories
   const getCategoryIcon = (categoryName) => {
@@ -119,10 +118,7 @@ const Skills = () => {
                   className="group relative animate-fadeIn"
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
-                  {/* Gradient border effect */}
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${gradient} rounded-3xl opacity-0 group-hover:opacity-100 blur transition duration-500`}></div>
-
-                  <div className="relative bg-white dark:bg-dark-800 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 dark:border-dark-600 h-full">
+                  <div className="relative bg-white dark:bg-dark-800 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-dark-600 hover:border-primary-300 dark:hover:border-primary-600 h-full">
                     {/* Category header with icon */}
                     <div className="flex items-center justify-center gap-3 mb-6">
                       <div className={`p-3 bg-gradient-to-br ${gradient} rounded-xl shadow-lg`}>
@@ -137,44 +133,26 @@ const Skills = () => {
                     <div className="flex flex-wrap gap-3 justify-center">
                       {category.skills.map((skill, index) => {
                         const SkillIcon = getSkillIcon(skill);
-                        const skillKey = `${idx}-${index}`;
 
                         return (
                           <div
                             key={index}
-                            className="group/skill relative"
-                            onMouseEnter={() => setHoveredSkill(skillKey)}
-                            onMouseLeave={() => setHoveredSkill(null)}
+                            className="group/skill"
                           >
                             {/* Skill badge */}
                             <div className={`
                               relative px-4 py-2.5 rounded-xl font-semibold text-sm
                               bg-gradient-to-r ${gradient} text-white
-                              shadow-md hover:shadow-xl
-                              transition-all duration-300 transform
-                              hover:scale-110 hover:-rotate-2
-                              cursor-pointer overflow-hidden
-                              ${hoveredSkill === skillKey ? 'ring-2 ring-offset-2 ring-primary-400' : ''}
+                              shadow-sm hover:shadow-md
+                              transition-all duration-200
+                              hover:brightness-110
+                              cursor-default
                             `}>
-                              {/* Shimmer effect */}
-                              <div className="absolute inset-0 shimmer opacity-0 group-hover/skill:opacity-100"></div>
-
-                              <div className="relative z-10 flex items-center gap-2">
+                              <div className="flex items-center gap-2">
                                 {SkillIcon && <SkillIcon className="w-4 h-4" />}
                                 <span>{skill}</span>
                               </div>
-
-                              {/* Animated dots in background */}
-                              <div className="absolute top-0 right-0 w-2 h-2 bg-white/30 rounded-full animate-ping"></div>
                             </div>
-
-                            {/* Tooltip on hover */}
-                            {hoveredSkill === skillKey && (
-                              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap animate-fadeIn shadow-lg z-20">
-                                {skill}
-                                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-gray-800"></div>
-                              </div>
-                            )}
                           </div>
                         );
                       })}

@@ -50,12 +50,7 @@ const Experience = () => {
 
                   {/* Experience card */}
                   <div className="md:ml-20 group relative">
-                    {/* Gradient border effect */}
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 rounded-2xl opacity-0 group-hover:opacity-100 blur transition duration-500"></div>
-
-                    <div className="relative glass-effect rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/30 dark:border-white/10 overflow-hidden">
-                      {/* Shimmer effect */}
-                      <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100"></div>
+                    <div className="relative glass-effect rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/30 dark:border-white/10 hover:border-primary-300/50 dark:hover:border-primary-500/30 overflow-hidden">
 
                       <div className="relative z-10">
                         {/* Job title with icon */}

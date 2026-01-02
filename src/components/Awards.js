@@ -60,21 +60,16 @@ const Awards = () => {
                   className="group relative animate-fadeIn"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  {/* Animated gradient border */}
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${gradient} rounded-2xl opacity-0 group-hover:opacity-100 blur transition duration-500`}></div>
-
-                  <div className="relative bg-white dark:bg-dark-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 dark:border-white/10 overflow-hidden h-full backdrop-blur-sm">
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                  <div className="relative bg-white dark:bg-dark-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-white/10 hover:border-primary-300 dark:hover:border-primary-600 overflow-hidden h-full backdrop-blur-sm">
 
                     <div className="relative z-10">
                       {/* Award icon */}
-                      <div className={`inline-flex p-3 bg-gradient-to-br ${gradient} rounded-xl mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`inline-flex p-3 bg-gradient-to-br ${gradient} rounded-xl mb-4 shadow-md`}>
                         <Icon className="w-6 h-6 text-white" />
                       </div>
 
                       {/* Award title */}
-                      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary-500 group-hover:to-primary-600 transition-all duration-300">
+                      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-300">
                         {award.title}
                       </h3>
 
@@ -94,7 +89,7 @@ const Awards = () => {
                       </p>
 
                       {/* Decorative corner accent */}
-                      <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${gradient} opacity-10 rounded-bl-full transform translate-x-6 -translate-y-6 group-hover:scale-150 transition-transform duration-500`}></div>
+                      <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${gradient} opacity-10 rounded-bl-full transform translate-x-6 -translate-y-6`}></div>
                     </div>
                   </div>
                 </div>
