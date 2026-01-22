@@ -23,7 +23,9 @@ export const experience = [
     details: [
       'Built RESTful micro-services with Java 17 / Spring Boot for user authentication, matchmaking and room/lobby management; persisted player and game data in MongoDB.',
       'Developed a low-latency Netty-powered WebSocket gateway; created a custom TLV (type-length-value) binary protocol to stream gameplay events between client and server.',
-      'Optimized thread-pool usage, I/O pipelines, message serialization and message sending mechanics.'
+      'Optimized thread-pool usage, I/O pipelines, message serialization and message sending mechanics.',
+      'Designed and implemented game logic for real-time multiplayer games, including position synchronization, combat mechanics, and skill-casting systems, ensure efficient and scalable server-side processing.',
+      'Deployed and maintained game services on company VPS infrastructure, optimizing configurations and implementing monitoring to achieve 99% uptime and reliable performance for players.'
     ]
   },
 ];
