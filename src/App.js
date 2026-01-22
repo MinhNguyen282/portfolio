@@ -7,6 +7,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import FloatingContact from './components/FloatingContact';
 
 // Lazy load components for better performance
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -17,13 +18,14 @@ const Contact = React.lazy(() => import('./components/Contact'));
 const ProjectDetails = React.lazy(() => import('./components/ProjectDetailsNew'));
 const CV = React.lazy(() => import('./components/CV'));
 const Experience = React.lazy(() => import('./components/Experience'));
+const Publications = React.lazy(() => import('./components/Publications'));
 
 // Loading component for Suspense fallback
 const LoadingSpinner = () => (
-  <div className="flex items-center justify-center min-h-screen">
+  <div className="flex items-center justify-center min-h-screen bg-ink-50 dark:bg-ink-950">
     <div className="relative">
-      <div className="w-16 h-16 border-4 border-primary-200 border-solid rounded-full animate-spin"></div>
-      <div className="absolute top-0 left-0 w-16 h-16 border-4 border-primary-500 border-solid rounded-full border-t-transparent animate-spin"></div>
+      <div className="w-12 h-12 border-2 border-ink-200 dark:border-ink-800 border-solid rounded-full"></div>
+      <div className="absolute top-0 left-0 w-12 h-12 border-2 border-transparent border-t-accent-500 border-solid rounded-full animate-spin"></div>
     </div>
   </div>
 );
@@ -45,7 +47,7 @@ function App() {
           <BrowserRouter>
             <ScrollToTop />
             <SEO />
-            <div className="flex flex-col min-h-screen bg-white dark:bg-dark-900 transition-colors duration-300">
+            <div className="flex flex-col min-h-screen bg-ink-50 dark:bg-ink-950 transition-colors duration-500">
               <Navbar />
               <main className="flex-grow">
                 <Suspense fallback={<LoadingSpinner />}>
@@ -57,11 +59,13 @@ function App() {
                     <Route path="/awards" element={<Awards />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/experience" element={<Experience />} />
+                    <Route path="/publications" element={<Publications />} />
                     <Route path="/cv" element={<CV />} />
                   </Routes>
                 </Suspense>
               </main>
               <Footer />
+              <FloatingContact />
             </div>
           </BrowserRouter>
         </ThemeProvider>

@@ -3,6 +3,7 @@ import { projects } from '../data/projects';
 import { awards } from '../data/awards';
 import { skills } from '../data/skills';
 import { experience } from '../data/experience';
+import { publications } from '../data/publications';
 
 const DataContext = createContext();
 
@@ -21,6 +22,7 @@ export const DataProvider = ({ children }) => {
     awards,
     skills,
     experience,
+    publications,
   };
 
   return (

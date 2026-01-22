@@ -5,7 +5,7 @@ export const skills = [
   },
   {
     category: 'Frameworks',
-    skills: ['Node.js', 'React.js', 'Express.js', 'Spring'],
+    skills: ['Spring', 'Node.js', 'React.js', 'Express.js'],
   },
   {
     category: 'Database',
@@ -13,10 +13,10 @@ export const skills = [
   },
   {
     category: 'DevOps',
-    skills: ['Git', 'GitHub Actions', 'CI/CD', 'Docker'],
+    skills: ['Git', 'GitHub Actions', 'CI/CD', 'Docker', 'RabbitMQ'],
   },
   {
-    category: 'Message Brokers',
-    skills: ['RabbitMQ'],
+    category: 'Others',
+    skills: ['System Design', 'OOP', 'Computer Vision', 'Machine Learning'],
   },
 ];
