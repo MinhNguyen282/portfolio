@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaPaperPlane } from 'react-icons/fa';
 import SEO from './SEO';
 
 const Contact = () => {
@@ -8,19 +8,22 @@ const Contact = () => {
       href: 'mailto:nhhminh.2004.work@gmail.com',
       icon: FaEnvelope,
       label: 'Email',
-      color: 'from-red-500 to-pink-500',
+      value: 'nhhminh.2004.work@gmail.com',
+      description: 'Best for inquiries',
     },
     {
       href: 'https://www.linkedin.com/in/minhnguyenapcs22/',
       icon: FaLinkedin,
       label: 'LinkedIn',
-      color: 'from-blue-600 to-blue-400',
+      value: 'minhnguyenapcs22',
+      description: 'Let\'s connect',
     },
     {
       href: 'https://github.com/MinhNguyen282',
       icon: FaGithub,
       label: 'GitHub',
-      color: 'from-gray-800 to-gray-600',
+      value: 'MinhNguyen282',
+      description: 'Check my code',
     },
   ];
 
@@ -32,74 +35,97 @@ const Contact = () => {
         keywords="contact, email, linkedin, github, software engineer"
         url="/contact"
       />
-      <section className="relative bg-gradient-to-br from-[#e0f7fa] to-[#e3f2fd] dark:from-dark-900 dark:to-dark-800 py-20 min-h-screen overflow-hidden transition-colors duration-300 pt-24">
-        {/* Animated background circles */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-300 dark:bg-primary-800 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-30 animate-float"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-300 dark:bg-purple-800 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-30 animate-float-slow"></div>
-        <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-pink-300 dark:bg-pink-800 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-30 animate-float"></div>
+      <section className="relative bg-ink-50 dark:bg-ink-950 min-h-screen overflow-hidden transition-colors duration-500">
+        {/* Background elements */}
+        <div className="absolute inset-0 grid-bg opacity-30"></div>
+        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-accent-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl"></div>
 
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
-
-        <div className="relative z-10 container mx-auto px-6">
-          <div className="max-w-2xl mx-auto">
-            {/* Glass morphism card */}
-            <div className="glass-effect rounded-3xl shadow-2xl p-8 sm:p-12 text-center backdrop-blur-xl border border-white/20 dark:border-white/10 animate-fadeIn">
-              <div className="mb-8">
-                <div className="inline-block p-4 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full mb-6 animate-bounce-in shadow-xl">
-                  <FaEnvelope className="w-12 h-12 text-white" />
+        <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 py-24">
+          {/* Header */}
+          <header className="mb-16 text-center">
+            <div
+              className="opacity-0 animate-fadeIn"
+              style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
+            >
+              <div className="inline-flex items-center gap-4 mb-6">
+                <div className="p-3 bg-accent-500 rounded-xl">
+                  <FaPaperPlane className="w-6 h-6 text-white" />
                 </div>
-                <h1 className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-gray-primary to-primary-500 dark:from-white dark:to-primary-400 mb-4 drop-shadow-lg leading-tight">
-                  Let's Connect
-                </h1>
-                <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-200 leading-relaxed">
-                  Feel free to reach out for collaborations, opportunities, or just to say hello!
-                </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-                {contactLinks.map((link, index) => {
-                  const Icon = link.icon;
-                  return (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group relative overflow-hidden"
-                      style={{ animationDelay: `${index * 150}ms` }}
-                    >
-                      <div className="relative bg-white dark:bg-dark-800 rounded-2xl p-6 transition-all duration-500 transform hover:scale-110 hover:-rotate-2 shadow-lg hover:shadow-2xl">
-                        {/* Animated gradient background on hover */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight">
+                Let's
+                <span className="gradient-text"> Connect</span>
+              </h1>
 
-                        <div className="relative z-10">
-                          <Icon className="w-10 h-10 mx-auto mb-3 text-primary-500 group-hover:text-white transition-colors duration-300" />
-                          <p className="font-bold text-gray-800 dark:text-gray-100 group-hover:text-white transition-colors duration-300">
-                            {link.label}
-                          </p>
-                        </div>
+              <p className="text-lg text-ink-600 dark:text-ink-400 max-w-xl mx-auto leading-relaxed">
+                I'm always open to discussing new opportunities, collaborations, or just having a chat about technology.
+              </p>
+            </div>
+          </header>
 
-                        {/* Shimmer effect */}
-                        <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100"></div>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-
-              {/* Direct email button */}
-              <div className="pt-6 border-t border-gray-300 dark:border-gray-600">
+          {/* Contact cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {contactLinks.map((link, index) => {
+              const Icon = link.icon;
+              return (
                 <a
-                  href="mailto:nhhminh.2004.work@gmail.com"
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden"
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="group opacity-0 animate-fadeIn"
+                  style={{ animationDelay: `${0.2 + index * 0.1}s`, animationFillMode: 'forwards' }}
                 >
-                  <span className="relative z-10 flex items-center gap-3">
-                    <FaEnvelope className="w-5 h-5" />
-                    Send me an email
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                  <div className="relative bg-white dark:bg-ink-900 rounded-2xl p-6 border border-ink-200 dark:border-ink-800 hover:border-accent-400 dark:hover:border-accent-500 transition-all duration-500 hover:shadow-xl hover:shadow-accent-500/10 hover:-translate-y-1 text-center h-full">
+                    {/* Icon */}
+                    <div className="inline-flex p-4 bg-ink-100 dark:bg-ink-800 rounded-2xl mb-4 group-hover:bg-accent-500 transition-colors duration-300">
+                      <Icon className="w-8 h-8 text-ink-600 dark:text-ink-400 group-hover:text-white transition-colors duration-300" />
+                    </div>
+
+                    {/* Label */}
+                    <h3 className="font-display text-lg font-bold text-ink-900 dark:text-ink-100 mb-1">
+                      {link.label}
+                    </h3>
+
+                    {/* Value */}
+                    <p className="text-accent-600 dark:text-accent-400 text-sm font-medium mb-2 truncate">
+                      {link.value}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-ink-500 dark:text-ink-500 text-xs">
+                      {link.description}
+                    </p>
+
+                    {/* Hover accent line */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-400 to-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-b-2xl"></div>
+                  </div>
                 </a>
-              </div>
+              );
+            })}
+          </div>
+
+          {/* CTA Section */}
+          <div
+            className="text-center opacity-0 animate-fadeIn"
+            style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
+          >
+            <div className="bg-white dark:bg-ink-900 rounded-2xl p-8 md:p-12 border border-ink-200 dark:border-ink-800">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-ink-900 dark:text-ink-100 mb-4">
+                Ready to work together?
+              </h2>
+              <p className="text-ink-600 dark:text-ink-400 mb-8 max-w-md mx-auto">
+                I'm currently open to new opportunities. Drop me an email and let's build something great.
+              </p>
+              <a
+                href="mailto:nhhminh.2004.work@gmail.com"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-ink-900 dark:bg-ink-100 text-ink-50 dark:text-ink-900 font-display font-semibold rounded-full hover:bg-accent-500 dark:hover:bg-accent-500 dark:hover:text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent-500/20"
+              >
+                <FaEnvelope className="w-5 h-5" />
+                <span>Send me an email</span>
+              </a>
             </div>
           </div>
         </div>

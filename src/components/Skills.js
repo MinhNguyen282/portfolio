@@ -8,19 +8,19 @@ import {
   FaReact,
   FaNodeJs,
   FaDocker,
-  FaAws,
   FaGitAlt,
   FaPython,
   FaJava,
-  FaPhp
+  FaPhp,
+  FaBrain,
+  FaCogs
 } from 'react-icons/fa';
-import { SiSpringboot, SiMongodb, SiMysql, SiKubernetes, SiPostgresql, SiGo } from 'react-icons/si';
+import { SiSpringboot, SiMongodb, SiMysql, SiGo, SiCplusplus, SiJavascript } from 'react-icons/si';
 import SEO from './SEO';
 
 const Skills = () => {
   const { skills: skillCategories } = useData();
 
-  // Icon mapping for categories
   const getCategoryIcon = (categoryName) => {
     const iconMap = {
       'Backend': FaServer,
@@ -29,45 +29,34 @@ const Skills = () => {
       'DevOps': FaTools,
       'Tools': FaTools,
       'Languages': FaCode,
+      'Frameworks': FaCogs,
+      'Others': FaBrain,
     };
     return iconMap[categoryName] || FaCode;
   };
 
-  // Icon mapping for specific skills
   const getSkillIcon = (skillName) => {
     const iconMap = {
       'React': FaReact,
+      'React.js': FaReact,
       'ReactJS': FaReact,
       'Node.js': FaNodeJs,
       'NodeJS': FaNodeJs,
+      'Spring': SiSpringboot,
       'Spring Boot': SiSpringboot,
       'Docker': FaDocker,
-      'AWS': FaAws,
       'Git': FaGitAlt,
       'MongoDB': SiMongodb,
       'MySQL': SiMysql,
-      'PostgreSQL': SiPostgresql,
-      'Kubernetes': SiKubernetes,
       'Python': FaPython,
       'Java': FaJava,
       'PHP': FaPhp,
       'Golang': SiGo,
       'Go': SiGo,
+      'C++': SiCplusplus,
+      'JavaScript': SiJavascript,
     };
     return iconMap[skillName] || null;
-  };
-
-  // Color scheme for each category
-  const getCategoryGradient = (index) => {
-    const gradients = [
-      'from-blue-500 to-cyan-500',
-      'from-purple-500 to-pink-500',
-      'from-green-500 to-teal-500',
-      'from-orange-500 to-red-500',
-      'from-indigo-500 to-blue-500',
-      'from-yellow-500 to-orange-500',
-    ];
-    return gradients[index % gradients.length];
   };
 
   return (
@@ -75,88 +64,89 @@ const Skills = () => {
       <SEO
         title="Skills - Minh's Portfolio"
         description="My technical skills including back-end development with Spring Boot and Node.js, front-end with React, databases, DevOps, and cloud technologies."
-        keywords="skills, spring boot, nodejs, react, mysql, mongodb, docker, kubernetes, aws, backend developer"
+        keywords="skills, spring boot, nodejs, react, mysql, mongodb, docker, backend developer"
         url="/skills"
       />
       <section
         id="skills"
-        className="relative bg-gradient-to-br from-[#e0f7fa] to-[#e3f2fd] dark:from-dark-900 dark:to-dark-800 py-20 min-h-screen overflow-hidden transition-colors duration-300 pt-24"
+        className="relative bg-ink-50 dark:bg-ink-950 min-h-screen overflow-hidden transition-colors duration-500"
         role="main"
         aria-labelledby="skills-heading"
       >
-        {/* Animated background elements */}
-        <div className="absolute top-10 left-10 w-96 h-96 bg-blue-200 dark:bg-blue-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-20 animate-float"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-200 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-20 animate-float-slow"></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-teal-200 dark:bg-teal-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-20 animate-float"></div>
+        {/* Background elements */}
+        <div className="absolute inset-0 grid-bg opacity-30"></div>
+        <div className="absolute top-1/4 -right-48 w-96 h-96 bg-accent-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl"></div>
 
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] pointer-events-none"></div>
-
-        <div className="relative z-10 container mx-auto px-6">
-          <header className="text-center mb-16">
-            <div className="inline-block p-4 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full mb-6 animate-bounce-in shadow-xl">
-              <FaCode className="w-12 h-12 text-white" />
-            </div>
-            <h1
-              id="skills-heading"
-              className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-gray-primary to-primary-500 dark:from-white dark:to-primary-400 mb-6 drop-shadow-lg animate-fadeIn leading-tight"
+        <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 py-24">
+          {/* Header */}
+          <header className="mb-16">
+            <div
+              className="opacity-0 animate-fadeIn"
+              style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
             >
-              Technical Skills
-            </h1>
-            <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              A comprehensive toolkit for building modern, scalable applications
-            </p>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-accent-500 rounded-xl">
+                  <FaCode className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-xs uppercase tracking-ultra text-ink-500 font-medium">Expertise</span>
+              </div>
+
+              <h1
+                id="skills-heading"
+                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight"
+              >
+                Technical
+                <span className="block gradient-text">Skills</span>
+              </h1>
+
+              <p className="text-lg text-ink-600 dark:text-ink-400 max-w-xl leading-relaxed">
+                A comprehensive toolkit for building modern, scalable applications from concept to deployment.
+              </p>
+            </div>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Skills grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillCategories.map((category, idx) => {
               const CategoryIcon = getCategoryIcon(category.category);
-              const gradient = getCategoryGradient(idx);
 
               return (
                 <div
                   key={idx}
-                  className="group relative animate-fadeIn"
-                  style={{ animationDelay: `${idx * 100}ms` }}
+                  className="group opacity-0 animate-fadeIn"
+                  style={{ animationDelay: `${0.2 + idx * 0.1}s`, animationFillMode: 'forwards' }}
                 >
-                  <div className="relative bg-white dark:bg-dark-800 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-dark-600 hover:border-primary-300 dark:hover:border-primary-600 h-full">
-                    {/* Category header with icon */}
-                    <div className="flex items-center justify-center gap-3 mb-6">
-                      <div className={`p-3 bg-gradient-to-br ${gradient} rounded-xl shadow-lg`}>
-                        <CategoryIcon className="w-6 h-6 text-white" />
+                  <div className="relative bg-white dark:bg-ink-900 rounded-2xl p-6 border border-ink-200 dark:border-ink-800 hover:border-accent-400/50 dark:hover:border-accent-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent-500/5 h-full">
+                    {/* Category header */}
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-2.5 bg-accent-500 rounded-xl">
+                        <CategoryIcon className="w-5 h-5 text-white" />
                       </div>
-                      <h2 className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}>
+                      <h2 className="font-display text-xl font-bold text-ink-900 dark:text-ink-100">
                         {category.category}
                       </h2>
                     </div>
 
-                    {/* Skills grid */}
-                    <div className="flex flex-wrap gap-3 justify-center">
+                    {/* Skills list */}
+                    <div className="flex flex-wrap gap-2">
                       {category.skills.map((skill, index) => {
                         const SkillIcon = getSkillIcon(skill);
 
                         return (
                           <div
                             key={index}
-                            className="group/skill"
+                            className="flex items-center gap-2 px-3 py-2 bg-ink-100 dark:bg-ink-800 rounded-lg text-ink-700 dark:text-ink-300 text-sm font-medium hover:bg-accent-100 dark:hover:bg-accent-900/30 hover:text-accent-700 dark:hover:text-accent-400 transition-colors duration-300"
                           >
-                            {/* Skill badge */}
-                            <div className={`
-                              relative px-4 py-2.5 rounded-xl font-semibold text-sm
-                              bg-gradient-to-r ${gradient} text-white
-                              shadow-sm hover:shadow-md
-                              transition-all duration-200
-                              hover:brightness-110
-                              cursor-default
-                            `}>
-                              <div className="flex items-center gap-2">
-                                {SkillIcon && <SkillIcon className="w-4 h-4" />}
-                                <span>{skill}</span>
-                              </div>
-                            </div>
+                            {SkillIcon && <SkillIcon className="w-4 h-4" />}
+                            <span>{skill}</span>
                           </div>
                         );
                       })}
                     </div>
+
+                    {/* Hover accent line */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-400 to-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-2xl"></div>
                   </div>
                 </div>
               );
@@ -165,7 +155,7 @@ const Skills = () => {
 
           {skillCategories.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-500 dark:text-gray-400 text-lg">
+              <p className="text-ink-500 dark:text-ink-500 text-lg">
                 No skills to display at the moment.
               </p>
             </div>

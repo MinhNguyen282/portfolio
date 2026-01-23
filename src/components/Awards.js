@@ -1,24 +1,14 @@
 import React from 'react';
 import { useData } from '../contexts/DataContext';
-import { FaTrophy, FaMedal, FaAward, FaStar } from 'react-icons/fa';
+import { FaTrophy, FaMedal, FaAward, FaStar, FaGraduationCap } from 'react-icons/fa';
 import SEO from './SEO';
 
 const Awards = () => {
   const { awards } = useData();
 
   const getAwardIcon = (index) => {
-    const icons = [FaTrophy, FaMedal, FaAward, FaStar];
+    const icons = [FaTrophy, FaMedal, FaAward, FaStar, FaGraduationCap];
     return icons[index % icons.length];
-  };
-
-  const getGradientColor = (index) => {
-    const gradients = [
-      'from-yellow-400 to-orange-500',
-      'from-blue-400 to-indigo-500',
-      'from-purple-400 to-pink-500',
-      'from-green-400 to-teal-500',
-    ];
-    return gradients[index % gradients.length];
   };
 
   return (
@@ -26,71 +16,85 @@ const Awards = () => {
       <SEO
         title="Awards - Minh's Portfolio"
         description="Academic and professional awards and achievements in software development and computer science."
-        keywords="awards, achievements, honors, recognition, computer science"
+        keywords="awards, achievements, honors, recognition, computer science, ICPC"
         url="/awards"
       />
-      <section className="relative bg-gradient-to-br from-[#f0f4ff] to-[#e0e7ff] dark:from-dark-900 dark:to-dark-800 py-20 min-h-screen overflow-hidden transition-colors duration-300 pt-24">
-        {/* Animated background elements */}
-        <div className="absolute top-20 right-20 w-72 h-72 bg-yellow-200 dark:bg-yellow-800 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-30 animate-float"></div>
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-purple-200 dark:bg-purple-800 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-30 animate-float-slow"></div>
+      <section className="relative bg-ink-50 dark:bg-ink-950 min-h-screen overflow-hidden transition-colors duration-500">
+        {/* Background elements */}
+        <div className="absolute inset-0 grid-bg opacity-30"></div>
+        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-accent-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl"></div>
 
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] pointer-events-none"></div>
+        <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 py-24">
+          {/* Header */}
+          <header className="mb-16">
+            <div
+              className="opacity-0 animate-fadeIn"
+              style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-accent-500 rounded-xl">
+                  <FaTrophy className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-xs uppercase tracking-ultra text-ink-500 font-medium">Recognition</span>
+              </div>
 
-        <div className="relative z-10 container mx-auto px-6">
-          <header className="text-center mb-16">
-            <div className="inline-block p-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mb-6 animate-bounce-in shadow-xl">
-              <FaTrophy className="w-12 h-12 text-white" />
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight">
+                Awards &
+                <span className="block gradient-text">Achievements</span>
+              </h1>
+
+              <p className="text-lg text-ink-600 dark:text-ink-400 max-w-xl leading-relaxed">
+                Recognition for academic excellence and competitive programming achievements.
+              </p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-gray-primary to-primary-500 dark:from-white dark:to-primary-400 mb-4 drop-shadow-lg animate-fadeIn leading-tight">
-              Awards & Achievements
-            </h1>
-            <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Recognition and honors for academic and professional excellence
-            </p>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Awards grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {awards.map((award, index) => {
               const Icon = getAwardIcon(index);
-              const gradient = getGradientColor(index);
 
               return (
                 <div
                   key={award.id}
-                  className="group relative animate-fadeIn"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="group opacity-0 animate-fadeIn"
+                  style={{ animationDelay: `${0.2 + index * 0.1}s`, animationFillMode: 'forwards' }}
                 >
-                  <div className="relative bg-white dark:bg-dark-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-white/10 hover:border-primary-300 dark:hover:border-primary-600 overflow-hidden h-full backdrop-blur-sm">
-
-                    <div className="relative z-10">
-                      {/* Award icon */}
-                      <div className={`inline-flex p-3 bg-gradient-to-br ${gradient} rounded-xl mb-4 shadow-md`}>
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-
-                      {/* Award title */}
-                      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-300">
-                        {award.title}
-                      </h3>
-
-                      {/* Organization and year */}
-                      <div className="flex items-center gap-2 mb-3 flex-wrap">
-                        <span className="inline-flex items-center px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-semibold rounded-full">
-                          {award.organization}
-                        </span>
-                        <span className="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm font-semibold rounded-full">
-                          {award.year}
-                        </span>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                        {award.description}
-                      </p>
-
-                      {/* Decorative corner accent */}
-                      <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${gradient} opacity-10 rounded-bl-full transform translate-x-6 -translate-y-6`}></div>
+                  <div className="relative bg-white dark:bg-ink-900 rounded-2xl p-6 border border-ink-200 dark:border-ink-800 hover:border-accent-400/50 dark:hover:border-accent-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent-500/5 h-full">
+                    {/* Year badge */}
+                    <div className="absolute -top-3 right-6">
+                      <span className="px-3 py-1 bg-accent-500 text-white text-xs font-bold rounded-full shadow-lg">
+                        {award.year}
+                      </span>
                     </div>
+
+                    <div className="flex items-start gap-4">
+                      {/* Icon */}
+                      <div className="flex-shrink-0 p-3 bg-ink-100 dark:bg-ink-800 rounded-xl">
+                        <Icon className="w-6 h-6 text-accent-500" />
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        {/* Title */}
+                        <h3 className="font-display text-lg font-bold text-ink-900 dark:text-ink-100 mb-2 group-hover:text-accent-500 transition-colors duration-300">
+                          {award.title}
+                        </h3>
+
+                        {/* Organization */}
+                        <p className="text-sm text-accent-600 dark:text-accent-400 font-medium mb-3">
+                          {award.organization}
+                        </p>
+
+                        {/* Description */}
+                        <p className="text-ink-600 dark:text-ink-400 text-sm leading-relaxed">
+                          {award.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Hover accent line */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-400 to-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-2xl"></div>
                   </div>
                 </div>
               );
@@ -99,7 +103,7 @@ const Awards = () => {
 
           {awards.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-500 dark:text-gray-400 text-lg">
+              <p className="text-ink-500 dark:text-ink-500 text-lg">
                 No awards to display at the moment.
               </p>
             </div>
