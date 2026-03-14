@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#f97316" />
     <meta
       name="description"
-      content="Nguyen Huu Hoang Minh Portfolio"
+      content="Back-end developer and CS student at VNU-HCM. I build scalable APIs with Spring Boot and Node.js, and deploy with modern CI/CD pipelines. Explore my projects, experience, and blog."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.svg" />
     <!--
@@ -15,6 +15,9 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- Preconnect to Google Fonts for faster font loading (LCP improvement) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,7 +27,45 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>NHHMinh</title>
+    <title>Nguyễn Hữu Hoàng Minh - Software Engineer Portfolio</title>
+    <meta property="og:title" content="Nguyễn Hữu Hoàng Minh - Software Engineer Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.nhhminh.dev/" />
+    <meta property="og:image" content="https://www.nhhminh.dev/avatar.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://www.nhhminh.dev/" />
+    <!-- Person schema — static fallback for non-JS crawlers and AI citation engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://www.nhhminh.dev/#person",
+      "name": "Nguyễn Hữu Hoàng Minh",
+      "jobTitle": "Software Engineer",
+      "description": "Back-end developer and CS student at VNU-HCM, specializing in Spring Boot, Node.js, and scalable web applications.",
+      "url": "https://www.nhhminh.dev",
+      "image": "https://www.nhhminh.dev/avatar.jpg",
+      "email": "nhhminh.2004.work@gmail.com",
+      "sameAs": [
+        "https://github.com/MinhNguyen282",
+        "https://www.linkedin.com/in/minhnguyenapcs22"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Ho Chi Minh City University of Science (VNU-HCM)"
+      },
+      "knowsAbout": ["Spring Boot", "Node.js", "ReactJS", "Java", "JavaScript", "MySQL", "MongoDB", "Backend Development", "CI/CD"]
+    }
+    </script>
+    <!-- WebSite schema for SiteLinksSearchBox eligibility -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Nguyễn Hữu Hoàng Minh — Portfolio",
+      "url": "https://www.nhhminh.dev"
+    }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

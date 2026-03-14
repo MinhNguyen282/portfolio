@@ -1,7 +1,14 @@
 import React from 'react';
+import SEO from './SEO';
 
 const CV = () => {
   return (
+    <>
+      <SEO
+        title="CV - Nguyễn Hữu Hoàng Minh"
+        description="Download or view the full curriculum vitae of Nguyễn Hữu Hoàng Minh — Software Engineer, CS student at VNU-HCM, with experience in Spring Boot, Node.js, and CI/CD."
+        url="/cv"
+      />
     <section className="relative bg-gradient-to-br from-[#e0f7fa] to-[#e3f2fd] py-20 min-h-screen overflow-hidden">
       <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/hexellence.png')] pointer-events-none"></div>
       <div className="relative z-10 container mx-auto px-6">
@@ -18,6 +25,7 @@ const CV = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

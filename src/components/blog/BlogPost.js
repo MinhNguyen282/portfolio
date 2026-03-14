@@ -94,19 +94,34 @@ const BlogPost = () => {
             '@type': 'BlogPosting',
             headline: article.title,
             description: article.excerpt,
-            image: coverUrl,
+            // image is required for Google Article rich results — fall back to avatar
+            image: coverUrl || `${siteUrl}/avatar.jpg`,
             datePublished: article.publishedAt,
+            dateModified: article.updatedAt || article.publishedAt,
+            wordCount: article.content
+              ? article.content.replace(/<[^>]+>/g, '').trim().split(/\s+/).length
+              : undefined,
+            keywords: article.tags?.map((t) => t.name).join(', '),
+            url: `https://www.nhhminh.dev/blog/${article.slug}`,
             author: {
               '@type': 'Person',
+              '@id': 'https://www.nhhminh.dev/#person',
               name: author?.name || 'Nguyễn Hữu Hoàng Minh',
+              url: 'https://www.nhhminh.dev',
             },
+            // Google Article spec requires publisher to be Organization
             publisher: {
-              '@type': 'Person',
+              '@type': 'Organization',
               name: 'Nguyễn Hữu Hoàng Minh',
+              url: 'https://www.nhhminh.dev',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://www.nhhminh.dev/avatar.jpg',
+              },
             },
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `${siteUrl}/blog/${article.slug}`,
+              '@id': `https://www.nhhminh.dev/blog/${article.slug}`,
             },
           })}
         </script>

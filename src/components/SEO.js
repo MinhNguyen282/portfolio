@@ -47,23 +47,24 @@ const SEO = ({
       {/* Favicon */}
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       
-      {/* JSON-LD Structured Data */}
+      {/* JSON-LD Structured Data — Person entity, homepage canonical */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
+          "@id": "https://www.nhhminh.dev/#person",
           "name": "Nguyễn Hữu Hoàng Minh",
           "jobTitle": "Software Engineer",
           "description": description,
-          "url": fullUrl,
-          "image": fullImageUrl,
+          "url": "https://www.nhhminh.dev",
+          "image": "https://www.nhhminh.dev/avatar.jpg",
           "email": "nhhminh.2004.work@gmail.com",
           "sameAs": [
             "https://github.com/MinhNguyen282",
-            "https://linkedin.com/in/minhnguyenapcs22"
+            "https://www.linkedin.com/in/minhnguyenapcs22"
           ],
           "alumniOf": {
-            "@type": "Organization",
+            "@type": "CollegeOrUniversity",
             "name": "Ho Chi Minh City University of Science (VNU-HCM)"
           },
           "knowsAbout": [
