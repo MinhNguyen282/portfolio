@@ -1,9 +1,13 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { inject } from '@vercel/analytics';
 import { DataProvider } from './contexts/DataContext';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// Initialise Vercel Analytics (no-op in non-Vercel environments)
+inject();
 
 const container = document.getElementById('root');
 const root = createRoot(container);
