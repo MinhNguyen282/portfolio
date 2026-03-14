@@ -3,10 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://nguyenhuuhoangminh.me/sitemap.xml
-
-# Allow all crawlers to access CSS and JS files
-Allow: /static/
-
-# Crawl-delay (optional - set to be respectful to server resources)
-Crawl-delay: 1
+Sitemap: https://www.nhhminh.dev/sitemap.xml
