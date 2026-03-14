@@ -19,6 +19,8 @@ const ProjectDetails = React.lazy(() => import('./components/ProjectDetailsNew')
 const CV = React.lazy(() => import('./components/CV'));
 const Experience = React.lazy(() => import('./components/Experience'));
 const Publications = React.lazy(() => import('./components/Publications'));
+const BlogList = React.lazy(() => import('./components/blog/BlogList'));
+const BlogPost = React.lazy(() => import('./components/blog/BlogPost'));
 
 // Loading component for Suspense fallback
 const LoadingSpinner = () => (
@@ -60,6 +62,8 @@ function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/experience" element={<Experience />} />
                     <Route path="/publications" element={<Publications />} />
+                    <Route path="/blog" element={<BlogList />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/cv" element={<CV />} />
                   </Routes>
                 </Suspense>

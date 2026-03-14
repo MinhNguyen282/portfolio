@@ -20,12 +20,16 @@ const Navbar = () => {
   };
 
   const isActiveLink = (path) => {
+    if (path === '/blog') {
+      return location.pathname === '/blog' || location.pathname.startsWith('/blog/');
+    }
     return location.pathname === path;
   };
 
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/projects', label: 'Projects' },
+    { path: '/blog', label: 'Blog' },
     { path: '/skills', label: 'Skills' },
     { path: '/experience', label: 'Experience' },
     { path: '/publications', label: 'Publications' },
