@@ -94,10 +94,21 @@ function appendFilters(searchParams, filters, prefix) {
 
 /**
  * Get the full URL for a Strapi media asset.
- * Handles both absolute URLs (cloud storage) and relative URLs (local uploads).
+ * Handles:
+ *  - Arrays (Strapi v5 returns single-media as [obj] when using populate=*)
+ *  - Objects with .url property
+ *  - Plain URL strings
+ *  - Absolute URLs (cloud storage) and relative URLs (local uploads)
  */
 export function getStrapiMediaUrl(media) {
   if (!media) return null;
+
+  // Strapi v5 may return single-media fields as an array
+  if (Array.isArray(media)) {
+    if (media.length === 0) return null;
+    media = media[0];
+  }
+
   const url = media.url || media;
   if (typeof url !== 'string') return null;
   if (url.startsWith('http')) return url;
