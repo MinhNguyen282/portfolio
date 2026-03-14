@@ -233,10 +233,14 @@ export async function getTags() {
 // ─── Author API ─────────────────────────────────────────────────
 
 /**
- * Fetch the author profile (single type).
+ * Fetch the author profile (collection type — returns first published entry).
  */
 export async function getAuthor() {
-  return fetchAPI('/author', {
+  const res = await fetchAPI('/authors', {
     populate: ['avatar'],
+    pagination: { page: 1, pageSize: 1 },
+    status: 'published',
   });
+  // Return shape { data: <author object> } to match useBlogMeta's authorRes.data access
+  return { data: res.data?.[0] || null };
 }
