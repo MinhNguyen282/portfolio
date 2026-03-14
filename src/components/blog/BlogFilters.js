@@ -11,12 +11,16 @@ const BlogFilters = ({
   const [searchInput, setSearchInput] = useState(search || '');
 
   // Debounce search input — wait 400ms after user stops typing
+  // Store callback in ref to avoid re-triggering effect when parent re-renders
+  const onSearchChangeRef = React.useRef(onSearchChange);
+  onSearchChangeRef.current = onSearchChange;
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      onSearchChange(searchInput);
+      onSearchChangeRef.current(searchInput);
     }, 400);
     return () => clearTimeout(timer);
-  }, [searchInput, onSearchChange]);
+  }, [searchInput]);
 
   const clearSearch = () => {
     setSearchInput('');

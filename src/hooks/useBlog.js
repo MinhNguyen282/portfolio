@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   getArticles,
   getArticleBySlug,
@@ -26,11 +26,18 @@ export function useArticles(initialFilters = {}) {
   const [error, setError] = useState(null);
   const [filters, setFilters] = useState(initialFilters);
 
+  // Use a ref to track the filters for the fetch, avoiding dependency loops
+  const filtersRef = useRef(filters);
+  filtersRef.current = filters;
+
+  // Track mount status to prevent fetching after re-renders caused by errors
+  const hasFetchedRef = useRef(false);
+
   const fetchData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await getArticles(filters);
+      const response = await getArticles(filtersRef.current);
       setArticles(response.data || []);
       setPagination(
         response.meta?.pagination || {
@@ -46,23 +53,41 @@ export function useArticles(initialFilters = {}) {
     } finally {
       setLoading(false);
     }
-  }, [filters]);
+  }, []); // No dependencies — reads from ref
 
+  // Fetch on mount
   useEffect(() => {
-    fetchData();
+    if (!hasFetchedRef.current) {
+      hasFetchedRef.current = true;
+      fetchData();
+    }
   }, [fetchData]);
 
-  const setPage = (page) =>
-    setFilters((prev) => ({ ...prev, page }));
+  // Refetch when filters actually change (skip the initial render)
+  const prevFiltersRef = useRef(JSON.stringify(filters));
+  useEffect(() => {
+    const serialized = JSON.stringify(filters);
+    if (serialized !== prevFiltersRef.current) {
+      prevFiltersRef.current = serialized;
+      fetchData();
+    }
+  }, [filters, fetchData]);
 
-  const setCategory = (category) =>
-    setFilters((prev) => ({ ...prev, category, page: 1 }));
+  const setPage = useCallback((page) =>
+    setFilters((prev) => ({ ...prev, page })), []);
 
-  const setTag = (tag) =>
-    setFilters((prev) => ({ ...prev, tag, page: 1 }));
+  const setCategory = useCallback((category) =>
+    setFilters((prev) => ({ ...prev, category, page: 1 })), []);
 
-  const setSearch = (search) =>
-    setFilters((prev) => ({ ...prev, search, page: 1 }));
+  const setTag = useCallback((tag) =>
+    setFilters((prev) => ({ ...prev, tag, page: 1 })), []);
+
+  const setSearch = useCallback((search) =>
+    setFilters((prev) => {
+      // Don't update if value hasn't actually changed
+      if ((prev.search || '') === (search || '')) return prev;
+      return { ...prev, search, page: 1 };
+    }), []);
 
   return {
     articles,
