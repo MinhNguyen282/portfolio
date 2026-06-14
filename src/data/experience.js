@@ -37,21 +37,4 @@ export const experience = [
       'Conducted R&D on FrankenPHP as a replacement for PHP-FPM, delivering a Proof of Concept and benchmarks that demonstrated significant performance improvements.'
     ]
   },
-  {
-    id: 1,
-    jobTitle: 'Game Back-End Developer Intern',
-    company: 'GihOt Studio',
-    companyLogo: '/gihot.png',
-    location: 'Ho Chi Minh City, Vietnam',
-    duration: 'Jun 2025 - Aug 2025',
-    isCurrent: false,
-    description: 'Designed and implemented the entire game-server stack for a real-time multiplayer title blending MOBA, RTS and minion-control mechanics.',
-    technologies: ['Java 17', 'Spring Boot', 'MongoDB', 'Netty', 'WebSocket'],
-    details: [
-      'Built RESTful microservices with Spring Boot for authentication, matchmaking, and room/lobby management; persisted data in MongoDB.',
-      'Developed a low-latency Netty-powered WebSocket gateway with custom TLV binary protocol for streaming gameplay events.',
-      'Implemented game logic including position synchronization, combat mechanics, and skill-casting systems for scalable server-side processing.',
-      'Deployed and maintained game services on VPS infrastructure with monitoring, achieving 99% uptime.'
-    ]
-  },
 ];
