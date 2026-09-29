@@ -10,37 +10,69 @@ export const useTheme = () => {
   return context;
 };
 
-export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check for saved theme preference or default to light mode
-    if (typeof window === 'undefined') return false; // Handle SSR/test environment
-    
-    const savedTheme = localStorage?.getItem('theme');
-    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)')?.matches || false;
-    
-    return savedTheme === 'dark' || (!savedTheme && prefersDark);
-  });
+// Day window: 06:00–17:59  (light)
+// Night window: 18:00–05:59 (dark)
+const DAY_START_HOUR = 6;
+const NIGHT_START_HOUR = 18;
 
+const isNightHour = (hour) => hour >= NIGHT_START_HOUR || hour < DAY_START_HOUR;
+
+const getTimeBasedDarkMode = () => {
+  if (typeof window === 'undefined') return false; // SSR / test fallback
+  return isNightHour(new Date().getHours());
+};
+
+export const ThemeProvider = ({ children }) => {
+  // null = auto (follow wall clock); boolean = session-only manual override
+  const [override, setOverride] = useState(null);
+  const [timeBasedDark, setTimeBasedDark] = useState(getTimeBasedDarkMode);
   const [loading, setLoading] = useState(false);
 
+  const isDarkMode = override !== null ? override : timeBasedDark;
+  const isAutoMode = override === null;
+
+  // Apply theme class to <html>
   useEffect(() => {
-    // Apply theme to document
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
+    document.documentElement.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
+  // Watch the wall clock — flip mode at 6 AM / 6 PM and clear any override
+  useEffect(() => {
+    const sync = () => {
+      const next = getTimeBasedDarkMode();
+      setTimeBasedDark((prev) => {
+        if (prev !== next) {
+          // Boundary crossed (6 AM ↔ 6 PM) — drop manual override so auto resumes
+          setOverride(null);
+          return next;
+        }
+        return prev;
+      });
+    };
+
+    const interval = setInterval(sync, 60 * 1000);
+
+    // Re-sync when the tab regains focus (e.g. laptop slept across a boundary)
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') sync();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, []);
+
+  // Manual toggle = session-only override; auto resumes at next boundary cross
   const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
+    setOverride(!isDarkMode);
   };
 
   const value = {
     isDarkMode,
     toggleTheme,
+    isAutoMode,
     loading,
     setLoading,
   };

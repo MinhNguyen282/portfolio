@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f2441;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fb923c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="200" rx="20" fill="url(#bg)" />
+
+  <!-- Headphones icon (listening) -->
+  <path d="M44 96 C44 72 62 52 100 52 C138 52 156 72 156 96"
+        stroke="#93c5fd" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <rect x="36" y="94" width="16" height="24" rx="6" fill="#60a5fa"/>
+  <rect x="148" y="94" width="16" height="24" rx="6" fill="#60a5fa"/>
+
+  <!-- Waveform / audio lines -->
+  <rect x="80" y="126" width="4" height="22" rx="2" fill="url(#accent)"/>
+  <rect x="89" y="120" width="4" height="34" rx="2" fill="url(#accent)"/>
+  <rect x="98" y="130" width="4" height="14" rx="2" fill="url(#accent)"/>
+  <rect x="107" y="123" width="4" height="28" rx="2" fill="url(#accent)"/>
+  <rect x="116" y="128" width="4" height="18" rx="2" fill="url(#accent)"/>
+
+  <!-- IELTS label -->
+  <text x="100" y="172" font-family="'Arial', sans-serif" font-size="18"
+        font-weight="800" fill="white" text-anchor="middle" letter-spacing="4">IELTS</text>
+
+  <!-- Bottom accent bar -->
+  <rect x="70" y="178" width="60" height="3" rx="1.5" fill="url(#accent)"/>
+</svg>

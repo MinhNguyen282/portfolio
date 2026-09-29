@@ -2,6 +2,8 @@ import React from 'react';
 import SEO from './SEO';
 
 const CV = () => {
+  const cvUrl = `${process.env.PUBLIC_URL}/Nguyen%20Huu%20Hoang%20Minh%20-%20CV.pdf`;
+
   return (
     <>
       <SEO
@@ -17,7 +19,7 @@ const CV = () => {
         </h2>
         <div className="flex justify-center">
           <iframe
-            src={process.env.PUBLIC_URL + '/Nguyen Huu Hoang Minh - CV.pdf'}
+            src={cvUrl}
             title="My CV"
             className="w-full md:w-3/4 lg:w-2/3 h-screen"
             style={{ border: 'none' }}

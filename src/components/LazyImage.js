@@ -1,19 +1,39 @@
 import React, { useState, useRef, useEffect } from 'react';
 
+/**
+ * Image with IntersectionObserver-based lazy loading.
+ *
+ * Pass `priority` for above-the-fold images (the hero avatar): it skips the
+ * observer entirely and loads eagerly at high fetch priority. Lazy-loading an
+ * LCP element delays it until React has hydrated and the observer has fired,
+ * which is exactly the wrong trade for something already in the viewport.
+ *
+ * `webpSrcSet` renders a <picture> so modern browsers get WebP while `src`
+ * stays the universal fallback. `width`/`height` reserve layout space so the
+ * image cannot shift the page as it loads.
+ */
 const LazyImage = ({
   src,
   alt,
   className = '',
   placeholder = '/placeholder-image.jpg',
   loadingClassName = 'animate-pulse bg-gray-200 dark:bg-gray-700',
+  priority = false,
+  webpSrcSet,
+  srcSet,
+  sizes,
+  width,
+  height,
   ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(priority);
   const [hasError, setHasError] = useState(false);
   const imgRef = useRef();
 
   useEffect(() => {
+    if (priority) return undefined;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -32,7 +52,7 @@ const LazyImage = ({
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [priority]);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -42,6 +62,26 @@ const LazyImage = ({
     setHasError(true);
     setIsLoaded(true);
   };
+
+  const image = (
+    <img
+      src={hasError ? placeholder : src}
+      srcSet={hasError ? undefined : srcSet}
+      sizes={hasError ? undefined : sizes}
+      alt={alt}
+      width={width}
+      height={height}
+      onLoad={handleLoad}
+      onError={handleError}
+      className={`transition-opacity duration-300 ${
+        isLoaded ? 'opacity-100' : 'opacity-0'
+      } ${className}`}
+      loading={priority ? 'eager' : 'lazy'}
+      // React 18 does not yet map fetchPriority, so set the DOM attribute name.
+      fetchpriority={priority ? 'high' : undefined}
+      decoding={priority ? 'sync' : 'async'}
+    />
+  );
 
   return (
     <div ref={imgRef} className={`relative overflow-hidden ${className}`} {...props}>
@@ -73,19 +113,15 @@ const LazyImage = ({
       )}
 
       {/* Actual image */}
-      {isInView && (
-        <img
-          src={hasError ? placeholder : src}
-          alt={alt}
-          onLoad={handleLoad}
-          onError={handleError}
-          className={`transition-opacity duration-300 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          } ${className}`}
-          loading="lazy"
-          decoding="async"
-        />
-      )}
+      {isInView &&
+        (webpSrcSet && !hasError ? (
+          <picture>
+            <source type="image/webp" srcSet={webpSrcSet} sizes={sizes} />
+            {image}
+          </picture>
+        ) : (
+          image
+        ))}
 
       {/* Error state */}
       {hasError && isLoaded && (

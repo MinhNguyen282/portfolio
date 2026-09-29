@@ -34,9 +34,9 @@ const Experience = () => {
                 <span className="text-xs uppercase tracking-ultra text-ink-500 font-medium">Career Journey</span>
               </div>
 
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight leading-[1.12]">
                 Work
-                <span className="block gradient-text">Experience</span>
+                <span className="block gradient-text mt-1">Experience</span>
               </h1>
 
               <p className="text-lg text-ink-600 dark:text-ink-400 max-w-xl leading-relaxed">
@@ -51,7 +51,12 @@ const Experience = () => {
             <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent-400 via-accent-500/50 to-transparent hidden md:block"></div>
 
             <div className="space-y-16">
-              {experiences.map((exp, idx) => (
+              {experiences.map((exp, idx) => {
+                const isCurrent = Boolean(exp.isCurrent);
+                const isUpcoming = Boolean(exp.isUpcoming);
+                const isHighlighted = isCurrent || isUpcoming;
+
+                return (
                 <div
                   key={idx}
                   className="relative opacity-0 animate-fadeIn"
@@ -59,8 +64,8 @@ const Experience = () => {
                 >
                   {/* Timeline dot */}
                   <div className="absolute left-0 md:left-8 top-2 w-4 h-4 -translate-x-1/2 hidden md:block">
-                    <div className={`w-4 h-4 rounded-full border-2 ${exp.isCurrent ? 'bg-accent-500 border-accent-500' : 'bg-white dark:bg-ink-900 border-accent-400'}`}>
-                      {exp.isCurrent && (
+                    <div className={`w-4 h-4 rounded-full border-2 ${isHighlighted ? 'bg-accent-500 border-accent-500' : 'bg-white dark:bg-ink-900 border-accent-400'}`}>
+                      {isCurrent && (
                         <span className="absolute inset-0 rounded-full bg-accent-500 animate-ping opacity-75"></span>
                       )}
                     </div>
@@ -70,7 +75,7 @@ const Experience = () => {
                   <div className="md:ml-20 group">
                     <div className="relative bg-white dark:bg-ink-900 rounded-2xl p-8 border border-ink-200 dark:border-ink-800 hover:border-accent-400/50 dark:hover:border-accent-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent-500/5">
                       {/* Current badge */}
-                      {exp.isCurrent && (
+                      {isCurrent && (
                         <div className="absolute -top-3 right-6">
                           <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full shadow-lg">
                             <span className="relative flex h-2 w-2">
@@ -78,6 +83,13 @@ const Experience = () => {
                               <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                             </span>
                             Current Role
+                          </span>
+                        </div>
+                      )}
+                      {isUpcoming && (
+                        <div className="absolute -top-3 right-6">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-500 text-white text-xs font-bold rounded-full shadow-lg">
+                            Upcoming Role
                           </span>
                         </div>
                       )}
@@ -181,7 +193,8 @@ const Experience = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              );
+              })}
             </div>
 
             {experiences.length === 0 && (

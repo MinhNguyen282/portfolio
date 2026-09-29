@@ -26,7 +26,7 @@ const FloatingContact = () => {
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="hidden md:flex fixed bottom-6 right-6 z-50 flex-col items-end gap-3">
       {/* Contact Options */}
       <div
         className={`flex flex-col gap-2 transition-all duration-400 ${

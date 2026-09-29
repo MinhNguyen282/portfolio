@@ -1,39 +1,29 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaArrowLeft, FaExternalLinkAlt, FaGithub, FaCode, FaRocket, FaStar } from 'react-icons/fa';
+import { FaArrowLeft, FaExternalLinkAlt, FaGithub, FaRocket } from 'react-icons/fa';
 import { useData } from '../contexts/DataContext';
 import SEO from './SEO';
 
-const ProjectDetails = () => {
+const ProjectDetailsNew = () => {
   const { id } = useParams();
   const { projects } = useData();
   const project = projects.find((p) => p.id === parseInt(id, 10));
 
   if (!project) {
     return (
-      <section className="relative bg-ink-50 dark:bg-ink-950 min-h-screen overflow-hidden transition-colors duration-500">
-        <div className="absolute inset-0 grid-bg opacity-30"></div>
-        <div className="relative z-10 max-w-2xl mx-auto px-6 py-24">
-          <div className="bg-white dark:bg-ink-900 rounded-2xl border border-ink-200 dark:border-ink-800 p-12 text-center">
-            <div className="w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.768 16.5c-.77.833.192 2.5 1.732 2.5z" />
-              </svg>
-            </div>
-            <h2 className="font-display text-2xl font-bold text-ink-900 dark:text-ink-100 mb-4">
-              Project Not Found
-            </h2>
-            <p className="text-ink-600 dark:text-ink-400 mb-8">
-              Sorry, we couldn't find the project you're looking for.
-            </p>
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-ink-900 dark:bg-ink-100 text-ink-50 dark:text-ink-900 font-semibold rounded-full hover:bg-accent-500 dark:hover:bg-accent-500 dark:hover:text-white transition-all duration-300"
-            >
-              <FaArrowLeft className="w-4 h-4" />
-              Back to Projects
-            </Link>
-          </div>
+      <section className="relative bg-ink-50 dark:bg-ink-950 min-h-screen flex items-center justify-center">
+        <div className="text-center px-6">
+          <p className="font-mono text-accent-500 text-sm tracking-ultra uppercase mb-4">404</p>
+          <h2 className="font-display text-4xl font-black text-ink-900 dark:text-ink-50 mb-4 tracking-tighter">
+            Project not found
+          </h2>
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 mt-6 text-ink-600 dark:text-ink-400 hover:text-accent-500 transition-colors duration-300 group font-medium"
+          >
+            <FaArrowLeft className="transition-transform duration-300 group-hover:-translate-x-1" />
+            Back to Projects
+          </Link>
         </div>
       </section>
     );
@@ -42,103 +32,175 @@ const ProjectDetails = () => {
   return (
     <>
       <SEO
-        title={`${project.title} - Minh's Portfolio`}
+        title={`${project.title} — Minh's Portfolio`}
         description={project.description}
         keywords={project.technologies?.join(', ')}
         url={`/project/${project.id}`}
       />
-      <section className="relative bg-ink-50 dark:bg-ink-950 min-h-screen overflow-hidden transition-colors duration-500">
-        {/* Background elements */}
-        <div className="absolute inset-0 grid-bg opacity-30"></div>
-        <div className="absolute top-1/4 -right-48 w-96 h-96 bg-accent-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl"></div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 py-24">
-          {/* Back Button */}
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 mb-8 text-ink-600 dark:text-ink-400 hover:text-accent-500 dark:hover:text-accent-400 transition-colors duration-300 group opacity-0 animate-fadeIn"
-            style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
+      <article className="bg-ink-50 dark:bg-ink-950 min-h-screen transition-colors duration-500">
+
+        {/* ── Hero panel ─────────────────────────────────── */}
+        <div className="relative w-full overflow-hidden bg-ink-900 dark:bg-ink-950"
+          style={{ minHeight: '420px', maxHeight: '560px', height: '52vw' }}
+        >
+          {/* Background texture */}
+          <div className="absolute inset-0 grid-bg opacity-10" />
+
+          {/* Radial glow behind image */}
+          {project.featured && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div
+                className="w-96 h-96 rounded-full opacity-20"
+                style={{ background: 'radial-gradient(circle, #f97316 0%, transparent 70%)' }}
+              />
+            </div>
+          )}
+
+          {/* Project image — contained, centered */}
+          <div
+            className="absolute inset-0 flex items-center justify-center opacity-0 animate-fadeIn"
+            style={{ animationDelay: '0.15s', animationFillMode: 'forwards', padding: 'clamp(2rem, 6vw, 5rem)' }}
           >
-            <FaArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
-            <span className="font-medium">Back to Projects</span>
-          </Link>
+            <img
+              src={project.image}
+              alt={project.title}
+              className="max-h-full max-w-full object-contain"
+              style={{ filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.5))' }}
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Project Image */}
-            <div
-              className="opacity-0 animate-fadeIn"
-              style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
+          {/* Bottom fade into page background */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to top, var(--page-bg, #fafafa) 0%, transparent 100%)'
+            }}
+          />
+
+          {/* Light-mode fade helper */}
+          <style>{`
+            :root { --page-bg: #fafafa; }
+            .dark { --page-bg: #0a0a0a; }
+          `}</style>
+
+          {/* Back button — top left */}
+          <div className="absolute top-6 left-6 z-20 opacity-0 animate-fadeIn"
+            style={{ animationDelay: '0.05s', animationFillMode: 'forwards' }}
+          >
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm text-white/90 text-sm font-medium hover:bg-black/60 hover:text-white transition-all duration-300 group border border-white/10"
             >
-              <div className="relative group">
-                {project.featured && (
-                  <div className="absolute -inset-1 bg-gradient-to-r from-accent-400 via-accent-500 to-accent-400 rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition-all duration-500"></div>
-                )}
-                <div className="relative bg-white dark:bg-ink-900 rounded-2xl border border-ink-200 dark:border-ink-800 overflow-hidden">
-                  <div className="aspect-video bg-ink-100 dark:bg-ink-800 flex items-center justify-center p-8">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105"
-                      onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/600x400/171717/737373?text=Project';
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
+              <FaArrowLeft className="text-xs transition-transform duration-300 group-hover:-translate-x-1" />
+              Back
+            </Link>
+          </div>
+
+          {/* Featured badge — top right */}
+          {project.featured && (
+            <div className="absolute top-6 right-6 z-20 opacity-0 animate-fadeIn"
+              style={{ animationDelay: '0.05s', animationFillMode: 'forwards' }}
+            >
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent-500/90 backdrop-blur-sm text-white text-xs font-bold rounded-full tracking-wide uppercase">
+                ★ Featured
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* ── Content ────────────────────────────────────── */}
+        <div className="max-w-5xl mx-auto px-6 md:px-12 pt-10 pb-28">
+
+          {/* Meta row */}
+          <div
+            className="flex flex-wrap items-center justify-between gap-4 mb-8 opacity-0 animate-fadeIn"
+            style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
+          >
+            <div className="flex items-center gap-3">
+              {project.category && (
+                <span className="font-mono text-xs tracking-ultra uppercase text-accent-500">
+                  {project.category}
+                </span>
+              )}
+              {project.category && project.technologies?.length > 0 && (
+                <span className="text-ink-300 dark:text-ink-700">·</span>
+              )}
+              {project.technologies?.length > 0 && (
+                <span className="font-mono text-xs text-ink-400 dark:text-ink-500 tracking-wide">
+                  {project.technologies.length} technologies
+                </span>
+              )}
             </div>
 
-            {/* Project Information */}
-            <div className="space-y-8">
-              {/* Badges */}
-              <div
-                className="flex flex-wrap gap-3 opacity-0 animate-fadeIn"
-                style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
-              >
-                {project.featured && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent-500 text-white text-xs font-bold rounded-full">
-                    <FaStar className="w-3 h-3" />
-                    Featured
-                  </span>
-                )}
-                {project.category && (
-                  <span className="px-3 py-1.5 bg-ink-200 dark:bg-ink-800 text-ink-700 dark:text-ink-300 text-xs font-medium rounded-full">
-                    {project.category}
-                  </span>
-                )}
-              </div>
-
-              {/* Title */}
-              <div
-                className="opacity-0 animate-fadeIn"
-                style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
-              >
-                <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-ink-900 dark:text-ink-50 mb-4 tracking-tight">
-                  {project.title}
-                </h1>
-                <p className="text-lg text-ink-600 dark:text-ink-400 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-
-              {/* Technologies */}
-              {project.technologies && project.technologies.length > 0 && (
-                <div
-                  className="opacity-0 animate-fadeIn"
-                  style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
+            {/* Action buttons */}
+            <div className="flex items-center gap-3">
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-500/30"
                 >
-                  <div className="flex items-center gap-2 mb-4">
-                    <FaCode className="w-5 h-5 text-accent-500" />
-                    <h3 className="font-display text-lg font-semibold text-ink-900 dark:text-ink-100">
-                      Technologies
-                    </h3>
-                  </div>
+                  <FaRocket className="text-xs" />
+                  Live Demo
+                  <FaExternalLinkAlt className="text-xs opacity-70" />
+                </a>
+              )}
+              {project.code && (
+                <a
+                  href={project.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 border border-ink-300 dark:border-ink-700 text-ink-700 dark:text-ink-300 text-sm font-semibold rounded-full hover:border-ink-900 dark:hover:border-ink-300 hover:text-ink-900 dark:hover:text-ink-100 transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  <FaGithub />
+                  Source
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* Title */}
+          <div
+            className="mb-10 opacity-0 animate-fadeIn"
+            style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
+          >
+            <h1
+              className="font-display font-black text-ink-900 dark:text-ink-50 tracking-tighter leading-none mb-4"
+              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
+            >
+              {project.title}
+            </h1>
+            {/* Accent rule */}
+            <div className="flex items-center gap-3">
+              <div className="h-1 w-16 bg-accent-500 rounded-full" />
+              <div className="h-1 w-4 bg-accent-300 rounded-full opacity-50" />
+            </div>
+          </div>
+
+          {/* Body — description left, features right */}
+          <div
+            className="grid md:grid-cols-5 gap-12 md:gap-16 opacity-0 animate-fadeIn"
+            style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
+          >
+            {/* Description column (wider) */}
+            <div className="md:col-span-3 space-y-10">
+              <p className="text-lg text-ink-600 dark:text-ink-400 leading-relaxed">
+                {project.description}
+              </p>
+
+              {/* Tech stack */}
+              {project.technologies?.length > 0 && (
+                <div>
+                  <h3 className="font-mono text-xs tracking-ultra uppercase text-ink-400 dark:text-ink-500 mb-4">
+                    Tech Stack
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-4 py-2 bg-ink-100 dark:bg-ink-800 text-ink-700 dark:text-ink-300 rounded-lg text-sm font-medium hover:bg-accent-100 dark:hover:bg-accent-900/30 hover:text-accent-700 dark:hover:text-accent-400 transition-colors duration-300"
+                        className="px-3 py-1.5 bg-ink-100 dark:bg-ink-800/80 border border-ink-200 dark:border-ink-700 text-ink-700 dark:text-ink-300 rounded-lg text-sm font-medium hover:border-accent-400 hover:text-accent-600 dark:hover:border-accent-500 dark:hover:text-accent-400 transition-all duration-200"
                       >
                         {tech}
                       </span>
@@ -146,100 +208,39 @@ const ProjectDetails = () => {
                   </div>
                 </div>
               )}
-
-              {/* Action Buttons */}
-              <div
-                className="flex flex-wrap gap-4 opacity-0 animate-fadeIn"
-                style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
-              >
-                {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 px-6 py-3 bg-ink-900 dark:bg-ink-100 text-ink-50 dark:text-ink-900 font-semibold rounded-full hover:bg-accent-500 dark:hover:bg-accent-500 dark:hover:text-white transition-all duration-300 hover:-translate-y-0.5"
-                  >
-                    <FaRocket className="w-4 h-4" />
-                    Live Demo
-                    <FaExternalLinkAlt className="w-3 h-3" />
-                  </a>
-                )}
-                {project.code && (
-                  <a
-                    href={project.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 px-6 py-3 border-2 border-ink-900 dark:border-ink-200 text-ink-900 dark:text-ink-200 font-semibold rounded-full hover:bg-ink-900 hover:text-ink-50 dark:hover:bg-ink-200 dark:hover:text-ink-900 transition-all duration-300 hover:-translate-y-0.5"
-                  >
-                    <FaGithub className="w-4 h-4" />
-                    View Code
-                    <FaExternalLinkAlt className="w-3 h-3" />
-                  </a>
-                )}
-              </div>
-
-              {/* Highlights */}
-              {project.highlights && project.highlights.length > 0 && (
-                <div
-                  className="bg-white dark:bg-ink-900 rounded-2xl p-6 border border-ink-200 dark:border-ink-800 opacity-0 animate-fadeIn"
-                  style={{ animationDelay: '0.45s', animationFillMode: 'forwards' }}
-                >
-                  <h4 className="font-display font-semibold text-ink-900 dark:text-ink-100 mb-4">
-                    Key Features
-                  </h4>
-                  <ul className="space-y-2">
-                    {project.highlights.map((highlight, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-ink-600 dark:text-ink-400">
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0"></span>
-                        <span className="text-sm">{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
-          </div>
 
-          {/* Project Highlights Section */}
-          <div
-            className="mt-16 opacity-0 animate-fadeIn"
-            style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
-          >
-            <div className="bg-white dark:bg-ink-900 rounded-2xl p-8 md:p-12 border border-ink-200 dark:border-ink-800">
-              <h3 className="font-display text-2xl font-bold text-ink-900 dark:text-ink-100 mb-8 text-center">
-                Project Highlights
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="w-14 h-14 bg-accent-100 dark:bg-accent-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <FaCode className="text-accent-600 dark:text-accent-400 text-xl" />
-                  </div>
-                  <h4 className="font-display font-semibold text-ink-900 dark:text-ink-100 mb-2">Clean Code</h4>
-                  <p className="text-ink-600 dark:text-ink-400 text-sm">Well-structured and maintainable codebase</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <FaRocket className="text-green-600 dark:text-green-400 text-xl" />
-                  </div>
-                  <h4 className="font-display font-semibold text-ink-900 dark:text-ink-100 mb-2">Performance</h4>
-                  <p className="text-ink-600 dark:text-ink-400 text-sm">Optimized for speed and efficiency</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <svg className="text-purple-600 dark:text-purple-400 w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm8 0a1 1 0 011-1h6a1 1 0 011 1v2a1 1 0 01-1 1h-6a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h6a1 1 0 011 1v2a1 1 0 01-1 1h-6a1 1 0 01-1-1v-2z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <h4 className="font-display font-semibold text-ink-900 dark:text-ink-100 mb-2">Responsive</h4>
-                  <p className="text-ink-600 dark:text-ink-400 text-sm">Works perfectly on all devices</p>
-                </div>
+            {/* Features column (narrower) */}
+            {project.highlights?.length > 0 && (
+              <div className="md:col-span-2">
+                <h3 className="font-mono text-xs tracking-ultra uppercase text-ink-400 dark:text-ink-500 mb-6">
+                  Key Features
+                </h3>
+                <ol className="space-y-5">
+                  {project.highlights.map((highlight, idx) => (
+                    <li key={idx} className="flex items-start gap-4">
+                      <span
+                        className="font-mono text-xs font-bold text-accent-500 mt-0.5 shrink-0 tabular-nums"
+                        style={{ minWidth: '1.5rem' }}
+                      >
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                      <div className="flex-1">
+                        <div className="h-px bg-ink-200 dark:bg-ink-800 mb-3" />
+                        <p className="text-sm text-ink-700 dark:text-ink-300 leading-relaxed">
+                          {highlight}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </div>
-            </div>
+            )}
           </div>
         </div>
-      </section>
+      </article>
     </>
   );
 };
 
-export default ProjectDetails;
+export default ProjectDetailsNew;

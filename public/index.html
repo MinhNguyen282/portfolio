@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#f97316" />
     <meta
       name="description"
-      content="Back-end developer and CS student at VNU-HCM. I build scalable APIs with Spring Boot and Node.js, and deploy with modern CI/CD pipelines. Explore my projects, experience, and blog."
+      content="Back-end developer and CS student at VNU-HCM. I build scalable APIs with Spring Boot and Node.js, and deploy with modern CI/CD pipelines. Explore my projects, experience, and publications."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.svg" />
     <!--
@@ -15,9 +15,27 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!-- Preconnect to Google Fonts for faster font loading (LCP improvement) -->
+    <!-- Fonts: preconnect + direct <link> so the preload scanner starts these
+         during HTML parse. Space Grotesk and the italic face were dropped as
+         they are not referenced anywhere in the app. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
+    <!-- The hero avatar is the LCP element on "/". Preloading it lets the
+         request start during HTML parse instead of waiting for React to mount.
+         type="image/webp" means browsers without WebP simply skip this. -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="%PUBLIC_URL%/avatar-768.webp"
+      imagesrcset="%PUBLIC_URL%/avatar-384.webp 384w, %PUBLIC_URL%/avatar-768.webp 768w"
+      imagesizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 288px"
+    />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

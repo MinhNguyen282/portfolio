@@ -15,11 +15,42 @@ import {
   FaBrain,
   FaCogs
 } from 'react-icons/fa';
-import { SiSpringboot, SiMongodb, SiMysql, SiGo, SiCplusplus, SiJavascript } from 'react-icons/si';
+import {
+  SiSpringboot,
+  SiMongodb,
+  SiMysql,
+  SiGo,
+  SiCplusplus,
+  SiJavascript,
+  SiClaude,
+  SiOpenai,
+  SiGithubcopilot
+} from 'react-icons/si';
 import SEO from './SEO';
 
 const Skills = () => {
   const { skills: skillCategories } = useData();
+  const aiSkillGroups = [
+    {
+      title: 'AI Tools',
+      description: 'Tooling used for coding, prototyping, and delivery acceleration.',
+      icon: FaTools,
+      skills: ['Claude', 'Codex', 'Cursor', 'GitHub Copilot', 'Antigravity'],
+    },
+    {
+      title: 'AI Engineering',
+      description: 'Hands-on concepts for building and shipping LLM-powered systems.',
+      icon: FaBrain,
+      skills: ['RAG', 'LLM', 'AI Agents', 'Prompt Engineering', 'MCP', 'Tool Calling', 'Skills'],
+    },
+  ];
+  const aiToolBrandLogos = {
+    'Claude': { type: 'icon', icon: SiClaude },
+    'Codex': { type: 'icon', icon: SiOpenai },
+    'Cursor': { type: 'image', src: '/ai-logos/cursor.svg', alt: 'Cursor logo' },
+    'GitHub Copilot': { type: 'icon', icon: SiGithubcopilot },
+    'Antigravity': { type: 'image', src: '/ai-logos/antigravity.png', alt: 'Google Antigravity logo' },
+  };
 
   const getCategoryIcon = (categoryName) => {
     const iconMap = {
@@ -55,6 +86,18 @@ const Skills = () => {
       'Go': SiGo,
       'C++': SiCplusplus,
       'JavaScript': SiJavascript,
+      'Claude': FaBrain,
+      'Codex': FaCode,
+      'Cursor': FaCode,
+      'GitHub Copilot': FaGitAlt,
+      'Antigravity': FaTools,
+      'RAG': FaDatabase,
+      'LLM': FaBrain,
+      'AI Agents': FaCogs,
+      'Prompt Engineering': FaCode,
+      'MCP': FaCogs,
+      'Tool Calling': FaTools,
+      'Skills': FaTools,
     };
     return iconMap[skillName] || null;
   };
@@ -94,10 +137,10 @@ const Skills = () => {
 
               <h1
                 id="skills-heading"
-                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight"
+                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight leading-[1.12]"
               >
                 Technical
-                <span className="block gradient-text">Skills</span>
+                <span className="block gradient-text mt-1">Skills</span>
               </h1>
 
               <p className="text-lg text-ink-600 dark:text-ink-400 max-w-xl leading-relaxed">
@@ -152,6 +195,79 @@ const Skills = () => {
               );
             })}
           </div>
+
+          {/* AI skills */}
+          <section className="mt-16" aria-labelledby="ai-skills-heading">
+            <div className="mb-8 opacity-0 animate-fadeIn" style={{ animationDelay: '0.45s', animationFillMode: 'forwards' }}>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2.5 bg-accent-500 rounded-xl">
+                  <FaBrain className="w-5 h-5 text-white" />
+                </div>
+                <h2 id="ai-skills-heading" className="font-display text-2xl md:text-3xl font-bold text-ink-900 dark:text-ink-100 tracking-tight">
+                  AI Skills
+                </h2>
+              </div>
+              <p className="text-ink-600 dark:text-ink-400 max-w-2xl leading-relaxed">
+                Current tools and technical focus for modern AI product development.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {aiSkillGroups.map((group, idx) => {
+                const GroupIcon = group.icon;
+                return (
+                  <div
+                    key={group.title}
+                    className="group opacity-0 animate-fadeIn"
+                    style={{ animationDelay: `${0.55 + idx * 0.1}s`, animationFillMode: 'forwards' }}
+                  >
+                    <div className="relative bg-white dark:bg-ink-900 rounded-2xl p-6 border border-ink-200 dark:border-ink-800 hover:border-accent-400/50 dark:hover:border-accent-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-accent-500/5 h-full">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="p-2.5 bg-accent-500 rounded-xl">
+                          <GroupIcon className="w-5 h-5 text-white" />
+                        </div>
+                        <h3 className="font-display text-xl font-bold text-ink-900 dark:text-ink-100">
+                          {group.title}
+                        </h3>
+                      </div>
+
+                      <p className="text-sm text-ink-600 dark:text-ink-400 leading-relaxed mb-5">
+                        {group.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {group.skills.map((skill) => {
+                          const aiToolBrand = group.title === 'AI Tools' ? aiToolBrandLogos[skill] : null;
+                          const BrandIcon = aiToolBrand?.type === 'icon' ? aiToolBrand.icon : null;
+                          const SkillIcon = getSkillIcon(skill);
+                          return (
+                            <div
+                              key={skill}
+                              className="flex items-center gap-2 px-3 py-2 bg-ink-100 dark:bg-ink-800 rounded-lg text-ink-700 dark:text-ink-300 text-sm font-medium hover:bg-accent-100 dark:hover:bg-accent-900/30 hover:text-accent-700 dark:hover:text-accent-400 transition-colors duration-300"
+                            >
+                              {aiToolBrand?.type === 'image' && (
+                                <img
+                                  src={aiToolBrand.src}
+                                  alt={aiToolBrand.alt}
+                                  className="w-4 h-4 object-contain"
+                                  loading="lazy"
+                                />
+                              )}
+                              {BrandIcon && <BrandIcon className="w-4 h-4" />}
+                              {!aiToolBrand && SkillIcon && <SkillIcon className="w-4 h-4" />}
+                              <span>{skill}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-400 to-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-2xl"></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
 
           {skillCategories.length === 0 && (
             <div className="text-center py-20">

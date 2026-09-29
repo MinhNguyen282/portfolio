@@ -2,7 +2,11 @@ import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const ThemeToggle = ({ className = '' }) => {
-  const { isDarkMode, toggleTheme } = useTheme();
+  const { isDarkMode, toggleTheme, isAutoMode } = useTheme();
+
+  const ariaLabel = isAutoMode
+    ? `Theme is automatic — currently ${isDarkMode ? 'dark' : 'light'}. Click to override until next 6 AM/PM.`
+    : `Manually overridden to ${isDarkMode ? 'dark' : 'light'} mode. Click to flip.`;
 
   return (
     <button
@@ -11,7 +15,8 @@ const ThemeToggle = ({ className = '' }) => {
         relative w-14 h-14 focus:outline-none group
         ${className}
       `}
-      aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={ariaLabel}
+      title={ariaLabel}
       role="switch"
       aria-checked={isDarkMode}
       style={{

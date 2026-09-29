@@ -1,20 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
-import { SiSpringboot, SiNodedotjs, SiReact, SiMongodb, SiMysql, SiDocker } from 'react-icons/si';
 import LazyImage from './LazyImage';
 import SEO from './SEO';
 
 const Hero = () => {
-  const techStack = [
-    { icon: SiSpringboot, name: 'Spring Boot', color: '#6DB33F' },
-    { icon: SiNodedotjs, name: 'Node.js', color: '#339933' },
-    { icon: SiReact, name: 'React', color: '#61DAFB' },
-    { icon: SiMysql, name: 'MySQL', color: '#4479A1' },
-    { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
-    { icon: SiDocker, name: 'Docker', color: '#2496ED' },
-  ];
-
   return (
     <>
       <SEO />
@@ -47,7 +37,7 @@ const Hero = () => {
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                   </span>
                   <span className="text-sm font-medium text-ink-50 dark:text-ink-900 tracking-wide uppercase">
-                    Open to Work
+                    SWE Intern @ Axon
                   </span>
                 </div>
 
@@ -71,7 +61,7 @@ const Hero = () => {
                 >
                   <div className="editorial-divider"></div>
                   <p className="font-display text-xl md:text-2xl text-ink-600 dark:text-ink-400 font-medium tracking-wide">
-                    Software Engineer
+                    Software Engineer Intern | Axon
                   </p>
                 </div>
 
@@ -84,36 +74,6 @@ const Hero = () => {
                   specializing in robust, scalable web applications. I craft clean APIs,
                   architect databases, and deploy with modern CI/CD pipelines.
                 </p>
-
-                {/* Tech stack - horizontal scrolling on mobile */}
-                <div
-                  className="opacity-0 animate-fadeIn"
-                  style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
-                >
-                  <p className="text-xs uppercase tracking-ultra text-ink-500 dark:text-ink-500 mb-4 font-medium">
-                    Tech Stack
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    {techStack.map((tech, index) => {
-                      const Icon = tech.icon;
-                      return (
-                        <div
-                          key={tech.name}
-                          className="group flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-ink-900 rounded-xl border border-ink-200 dark:border-ink-800 hover:border-accent-400 dark:hover:border-accent-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-                          style={{ animationDelay: `${0.5 + index * 0.05}s` }}
-                        >
-                          <Icon
-                            className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"
-                            style={{ color: tech.color }}
-                          />
-                          <span className="text-sm font-medium text-ink-700 dark:text-ink-300">
-                            {tech.name}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
 
                 {/* CTA buttons */}
                 <div
@@ -188,7 +148,13 @@ const Hero = () => {
                   {/* Main image container */}
                   <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden border-2 border-ink-200 dark:border-ink-800 shadow-2xl">
                     <LazyImage
-                      src="/avatar.jpg"
+                      src="/avatar-768.jpg"
+                      srcSet="/avatar-384.jpg 384w, /avatar-768.jpg 768w"
+                      webpSrcSet="/avatar-384.webp 384w, /avatar-768.webp 768w"
+                      sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 288px"
+                      width={768}
+                      height={768}
+                      priority
                       alt="Nguyễn Hữu Hoàng Minh - Software Engineer"
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                     />

@@ -39,9 +39,9 @@ const Awards = () => {
                 <span className="text-xs uppercase tracking-ultra text-ink-500 font-medium">Recognition</span>
               </div>
 
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight leading-[1.12]">
                 Awards &
-                <span className="block gradient-text">Achievements</span>
+                <span className="block gradient-text mt-1">Achievements</span>
               </h1>
 
               <p className="text-lg text-ink-600 dark:text-ink-400 max-w-xl leading-relaxed">

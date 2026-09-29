@@ -46,10 +46,10 @@ const Projects = () => {
 
               <h1
                 id="projects-heading"
-                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight"
+                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight leading-[1.12]"
               >
                 Featured
-                <span className="block gradient-text">Projects</span>
+                <span className="block gradient-text mt-1">Projects</span>
               </h1>
 
               <p className="text-lg text-ink-600 dark:text-ink-400 max-w-2xl leading-relaxed">

@@ -25,6 +25,8 @@ const ProjectCard = ({ project, index = 0 }) => {
         <div className="relative aspect-[16/10] overflow-hidden">
           <LazyImage
             src={project.image}
+            webpSrcSet={project.imageWebpSrcSet}
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />

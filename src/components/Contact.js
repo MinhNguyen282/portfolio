@@ -54,9 +54,9 @@ const Contact = () => {
                 </div>
               </div>
 
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink-900 dark:text-ink-50 mb-6 tracking-tight leading-[1.12]">
                 Let's
-                <span className="gradient-text"> Connect</span>
+                <span className="block sm:inline gradient-text sm:ml-2 mt-1 sm:mt-0">Connect</span>
               </h1>
 
               <p className="text-lg text-ink-600 dark:text-ink-400 max-w-xl mx-auto leading-relaxed">

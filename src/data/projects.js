@@ -1,5 +1,44 @@
 export const projects = [
   {
+    id: 20,
+    title: "EduSmart LMS",
+    description: "A full-stack Learning Management System built for a private tutoring center. Features role-based dashboards for admins and students, a gamified quiz engine with LaTeX support, spaced-repetition flashcards, AI-powered smart practice sessions, lesson progress tracking, tuition management, and a document marketplace.",
+    image: "/edusmart-logo.png",
+    imageWebpSrcSet: "/edusmart-logo-600.webp 600w, /edusmart-logo-1200.webp 1200w",
+    technologies: ['React', 'Vite', 'TailwindCSS', 'Node.js', 'Fastify', 'MongoDB', 'MinIO S3', 'JWT', 'Recharts', 'KaTeX'],
+    demo: 'https://lms.daytoanthaylong.com',
+    code: null,
+    featured: true,
+    category: 'Full-stack',
+    highlights: [
+      'Role-based admin & student dashboards',
+      'Gamification: XP, levels, badges & streaks',
+      'Spaced-repetition flashcard system',
+      'AI Smart Practice targeting weak topics',
+      'Swagger-documented REST API',
+      'MinIO S3-compatible media storage'
+    ]
+  },
+  {
+    id: 21,
+    title: "IELTS Practice Platform",
+    description: "A self-hosted IELTS practice platform with full Cambridge test banks (cam6–cam19): 14 books, 56 tests, and 2,240+ questions. Built an OCR pipeline (pdftoppm + Tesseract) to extract content from PDFs, hand-curated 200+ YAML manifests for all 4 modules, and automated answer scoring with partial-match support. Deployed on a 1 GB VPS behind Caddy.",
+    image: "/ielts-platform.svg",
+    technologies: ['Python', 'FastAPI', 'SQLite', 'SQLAlchemy', 'Alembic', 'React', 'JWT', 'Caddy', 'Tesseract OCR'],
+    demo: 'https://ielts.nhhminh.dev',
+    code: null,
+    featured: true,
+    category: 'Full-stack',
+    highlights: [
+      '14 Cambridge books (cam6–cam19), 56 tests, 2,240+ questions',
+      'OCR pipeline: pdftoppm + Tesseract across 1,000+ PDF pages',
+      'Automated scoring with partial-match & IN-EITHER-ORDER support',
+      'Audio hosting and playback for all 224 listening sections',
+      'JWT auth + rate-limiting on a 1 GB / 1 vCPU VPS',
+      'Caddy reverse proxy with auto-HTTPS'
+    ]
+  },
+  {
     id: 0,
     title: "E-Compare",
     description: 'A web-based product comparison application with React and FastAPI, enabling users to search, compare, and manage product details seamlessly with AI supports.',
@@ -7,7 +46,7 @@ export const projects = [
     technologies: ['ReactJS', 'JavaScript', 'Python', 'FastAPI', 'Web Crawler'],
     demo: 'https://e-compare.vercel.app/',
     code: 'https://github.com/MinhNguyen282/E-Compare',
-    featured: true,
+    featured: false,
     category: 'Full-stack',
     highlights: ['AI-powered comparison', 'Web scraping', 'Real-time search']
   },
@@ -19,7 +58,7 @@ export const projects = [
     technologies: ['React', 'TailwindCSS', 'Node.js', 'Express', 'MongoDB'],
     demo: 'https://aodaimaysancodinh.netlify.app/',
     code: 'https://github.com/orgs/AodaimaysanDev/repositories',
-    featured: true,
+    featured: false,
     category: 'Full-stack',
     highlights: ['User authentication', 'Product catalog', 'Shopping cart', 'Order management']
   },
