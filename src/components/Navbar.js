@@ -43,9 +43,11 @@ const Navbar = () => {
     { path: '/experience', label: 'Experience' },
     { path: '/publications', label: 'Publications' },
     { path: '/awards', label: 'Awards' },
-    { path: '/contact', label: 'Contact' },
-    // Lives on its own subdomain, so it is a plain link rather than a router route.
+    // These live on their own subdomains, so they are plain links rather than
+    // router routes. Order matches the nav on blog.nhhminh.dev and books.nhhminh.dev.
+    { href: 'https://blog.nhhminh.dev', label: 'Blog', external: true },
     { href: 'https://books.nhhminh.dev', label: 'Books', external: true },
+    { path: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -74,7 +76,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden xl:flex items-center gap-1">
               {navLinks.map((link) => (
                 <NavItem
                   key={link.path || link.href}
@@ -99,7 +101,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden flex items-center gap-3">
+            <div className="xl:hidden flex items-center gap-3">
               <ThemeToggle />
               <button
                 onClick={toggleMenu}
@@ -133,7 +135,7 @@ const Navbar = () => {
 
       {/* Mobile menu overlay */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
+        className={`fixed inset-0 z-40 xl:hidden transition-all duration-500 ${
           isMobileMenuOpen ? 'visible' : 'invisible'
         }`}
       >
