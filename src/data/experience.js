@@ -1,4 +1,23 @@
+// Full-time start date (Vietnam time). The card shows "Upcoming Role" before this date
+// and switches to "Current Role" on its own afterwards, with no redeploy needed.
+const AXON_SWE1_START = new Date('2026-10-05T00:00:00+07:00');
+export const hasStartedSwe1 = Date.now() >= AXON_SWE1_START.getTime();
+
 export const experience = [
+  {
+    id: 4,
+    jobTitle: 'Software Engineer I',
+    company: 'Axon',
+    companyLogo: '/axon-logo.jpeg',
+    companyUrl: 'https://www.axon.com',
+    location: 'Ho Chi Minh City, Vietnam',
+    duration: 'Oct 5, 2026 - Present',
+    isCurrent: hasStartedSwe1,
+    isUpcoming: !hasStartedSwe1,
+    description: 'Returning to Axon full-time as a Software Engineer after completing the internship.',
+    technologies: [],
+    details: [],
+  },
   {
     id: 3,
     jobTitle: 'Software Engineer Intern',
@@ -6,8 +25,8 @@ export const experience = [
     companyLogo: '/axon-logo.jpeg',
     companyUrl: 'https://www.axon.com',
     location: 'Ho Chi Minh City, Vietnam',
-    duration: 'May 11, 2026 - Aug 3, 2026 (12 weeks)',
-    isCurrent: true,
+    duration: 'May 11, 2026 - Aug 7, 2026 (13 weeks)',
+    isCurrent: false,
     isUpcoming: false,
     description: 'Built OpsPilot, a Slack chatbot that helps developers reduce on-call effort by investigating alerts and generating comprehensive incident reports.',
     technologies: ['Slack', 'Splunk', 'Grafana', 'Feature Flags'],

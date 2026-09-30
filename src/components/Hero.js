@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaBookOpen } from 'react-icons/fa';
 import { FiArrowUpRight } from 'react-icons/fi';
 import LazyImage from './LazyImage';
+import { hasStartedSwe1 } from '../data/experience';
 import SEO from './SEO';
 
 const Hero = () => {
@@ -38,7 +39,7 @@ const Hero = () => {
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                   </span>
                   <span className="text-sm font-medium text-ink-50 dark:text-ink-900 tracking-wide uppercase">
-                    SWE Intern @ Axon
+                    {hasStartedSwe1 ? 'SWE I @ Axon' : 'Incoming SWE I @ Axon'}
                   </span>
                 </div>
 
@@ -62,7 +63,7 @@ const Hero = () => {
                 >
                   <div className="editorial-divider"></div>
                   <p className="font-display text-xl md:text-2xl text-ink-600 dark:text-ink-400 font-medium tracking-wide">
-                    Software Engineer Intern | Axon
+                    Software Engineer I | Axon
                   </p>
                 </div>
 
