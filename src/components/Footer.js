@@ -11,6 +11,7 @@ const Footer = () => {
     { path: '/awards', label: 'Awards' },
     { path: '/publications', label: 'Publications' },
     { path: '/contact', label: 'Contact' },
+    { href: 'https://books.nhhminh.dev', label: 'Reading Notes ↗' },
   ];
 
   const socialLinks = [
@@ -45,13 +46,24 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-ink-400 hover:text-accent-400 transition-colors duration-300 text-sm"
-                  >
-                    {link.label}
-                  </Link>
+                <li key={link.path || link.href}>
+                  {link.href ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ink-400 hover:text-accent-400 transition-colors duration-300 text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className="text-ink-400 hover:text-accent-400 transition-colors duration-300 text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

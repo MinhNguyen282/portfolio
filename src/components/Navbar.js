@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FiArrowUpRight } from 'react-icons/fi';
 import ThemeToggle from './ThemeToggle';
+
+// Router links for in-app pages, a plain <a> (new tab) for the external books site.
+const NavItem = ({ link, className, style, onClick, children }) =>
+  link.external ? (
+    <a href={link.href} target="_blank" rel="noopener noreferrer" className={className} style={style} onClick={onClick}>
+      {children}
+    </a>
+  ) : (
+    <Link to={link.path} className={className} style={style} onClick={onClick}>
+      {children}
+    </Link>
+  );
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,6 +44,8 @@ const Navbar = () => {
     { path: '/publications', label: 'Publications' },
     { path: '/awards', label: 'Awards' },
     { path: '/contact', label: 'Contact' },
+    // Lives on its own subdomain, so it is a plain link rather than a router route.
+    { href: 'https://books.nhhminh.dev', label: 'Books', external: true },
   ];
 
   return (
@@ -61,20 +76,21 @@ const Navbar = () => {
             {/* Desktop navigation */}
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
+                <NavItem
+                  key={link.path || link.href}
+                  link={link}
                   className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${
                     isActiveLink(link.path)
                       ? 'text-accent-600 dark:text-accent-400'
                       : 'text-ink-600 dark:text-ink-400 hover:text-ink-900 dark:hover:text-ink-100'
-                  }`}
+                  } ${link.external ? 'inline-flex items-center gap-0.5' : ''}`}
                 >
                   {link.label}
+                  {link.external && <FiArrowUpRight className="w-3.5 h-3.5 text-accent-500" aria-hidden="true" />}
                   {isActiveLink(link.path) && (
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent-500 rounded-full"></span>
                   )}
-                </Link>
+                </NavItem>
               ))}
 
               <div className="ml-4 pl-4 border-l border-ink-200 dark:border-ink-800">
@@ -138,9 +154,9 @@ const Navbar = () => {
           <div className="flex flex-col h-full pt-24 px-8 pb-8">
             <nav className="flex flex-col gap-2">
               {navLinks.map((link, index) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
+                <NavItem
+                  key={link.path || link.href}
+                  link={link}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`group flex items-center gap-4 py-4 border-b border-ink-100 dark:border-ink-800 transition-all duration-300 ${
                     isMobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
@@ -165,7 +181,10 @@ const Navbar = () => {
                   >
                     {link.label}
                   </span>
-                </Link>
+                  {link.external && (
+                    <FiArrowUpRight className="w-5 h-5 text-accent-500 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                  )}
+                </NavItem>
               ))}
             </nav>
 
