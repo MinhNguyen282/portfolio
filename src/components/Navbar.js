@@ -43,10 +43,6 @@ const Navbar = () => {
     { path: '/experience', label: 'Experience' },
     { path: '/publications', label: 'Publications' },
     { path: '/awards', label: 'Awards' },
-    // These live on their own subdomains, so they are plain links rather than
-    // router routes. Order matches the nav on blog.nhhminh.dev and books.nhhminh.dev.
-    { href: 'https://blog.nhhminh.dev', label: 'Blog', external: true },
-    { href: 'https://books.nhhminh.dev', label: 'Books', external: true },
     { path: '/contact', label: 'Contact' },
   ];
 

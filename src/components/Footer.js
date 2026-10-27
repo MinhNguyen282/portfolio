@@ -11,8 +11,6 @@ const Footer = () => {
     { path: '/awards', label: 'Awards' },
     { path: '/publications', label: 'Publications' },
     { path: '/contact', label: 'Contact' },
-    { href: 'https://blog.nhhminh.dev', label: 'Blog ↗' },
-    { href: 'https://books.nhhminh.dev', label: 'Reading Notes ↗' },
   ];
 
   const socialLinks = [

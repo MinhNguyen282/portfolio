@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaBookOpen } from 'react-icons/fa';
-import { FiArrowUpRight } from 'react-icons/fi';
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 import LazyImage from './LazyImage';
 import { hasStartedSwe1 } from '../data/experience';
 import SEO from './SEO';
@@ -132,31 +131,6 @@ const Hero = () => {
                     })}
                   </div>
                 </div>
-
-                {/* Reading notes site (books.nhhminh.dev) */}
-                <a
-                  href="https://books.nhhminh.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex w-full sm:w-auto sm:inline-flex items-center gap-4 p-3 pr-5 rounded-2xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900 hover:border-accent-400 dark:hover:border-accent-500 hover:shadow-lg hover:shadow-accent-500/10 transition-all duration-300 hover:-translate-y-0.5 opacity-0 animate-fadeIn"
-                  style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
-                >
-                  <span className="flex-none w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 text-white shadow-md shadow-accent-500/30">
-                    <FaBookOpen className="w-5 h-5" aria-hidden="true" />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-xs uppercase tracking-ultra text-accent-600 dark:text-accent-400 font-semibold">
-                      Reading notes
-                    </span>
-                    <span className="block text-sm md:text-base font-medium text-ink-800 dark:text-ink-200">
-                      System design book summaries, chapter by chapter
-                    </span>
-                  </span>
-                  <FiArrowUpRight
-                    className="flex-none ml-auto w-5 h-5 text-ink-400 group-hover:text-accent-500 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    aria-hidden="true"
-                  />
-                </a>
               </div>
 
               {/* Right column - Avatar with artistic treatment */}
